@@ -7,11 +7,13 @@
 //
 
 import UIKit
-
-private let reuseIdentifier = "Cell"
+import Firebase
 
 class NotesCatalogCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
+  
+  var userArticles = [Articles]()
+  let reuseIdentifier = "Cell"
+  
   let buttonTest: UIButton = {
     let button = UIButton()
     button.layer.cornerRadius = 10
@@ -28,12 +30,39 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    getData()
     settingButton()
+    NotificationCenter.default.addObserver(self, selector: #selector(loadList),
+                                           name: NSNotification.Name(rawValue: "refreshData"), object: nil)
     self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
     self.navigationController?.navigationBar.shadowImage = UIImage()
     self.navigationController?.navigationBar.isTranslucent = true
     // Register cell classes
     self.collectionView!.register(NotesCatalogCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+  }
+  
+  func getData() {
+    Reference().correctReference().child(FirebaseEntity.articles.rawValue)
+      .child(Reference().returnUserID()).observeSingleEvent(of: .value, with: { (snapshot) in
+      
+      guard let data = snapshot.value as? NSDictionary else {return}
+      for value in data.allValues{
+        let infoItem = Articles(dict: value as! NSDictionary)
+        self.userArticles.append(infoItem)
+        self.collectionView.reloadData()
+        print(value)
+        print(self.userArticles)
+      }
+      
+      // ...
+    }) { (error) in
+      print(error.localizedDescription)
+    }
+  }
+  
+  @objc func loadList(notification: NSNotification){
+    userArticles.removeAll()
+    getData()
   }
   
   @objc func createArticle() {
@@ -49,75 +78,10 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
     buttonTest.heightAnchor.constraint(equalToConstant: 60).isActive = true
     buttonTest.widthAnchor.constraint(equalToConstant: 60).isActive = true
   }
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using [segue destinationViewController].
-   // Pass the selected object to the new view controller.
-   }
-   */
-  
-  // MARK: UICollectionViewDataSource
-  
-  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of items
-    return 10
-  }
-  
-  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    cell.layer.cornerRadius = 10
-    cell.layer.shadowColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.00).cgColor
-    cell.layer.shadowOpacity = 1
-    cell.layer.shadowOffset = .init(width: 2, height: 7)
-    cell.layer.shadowRadius = 7
-    return cell
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: view.frame.width - 60, height: 170)
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 30
-  }
+
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     performSegue(withIdentifier: "PresentArticle", sender: self)
   }
-  
-  // MARK: UICollectionViewDelegate
-  
-  /*
-   // Uncomment this method to specify if the specified item should be highlighted during tracking
-   override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-   return true
-   }
-   */
-  
-  /*
-   // Uncomment this method to specify if the specified item should be selected
-   override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-   return true
-   }
-   */
-  
-  /*
-   // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-   override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-   return false
-   }
-   
-   override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-   return false
-   }
-   
-   override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-   
-   }
-   */
   
 }

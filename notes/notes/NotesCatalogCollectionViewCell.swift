@@ -101,8 +101,11 @@ class NotesCatalogCollectionViewCell: UICollectionViewCell {
     tadLabel.leftAnchor.constraint(equalTo: dateLabel.rightAnchor, constant: 15).isActive = true
     tadLabel.widthAnchor.constraint(equalToConstant: 90).isActive = true
     tadLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-
     
+  }
+  
+  func refresh(info: Articles) {
+    textLabel.text = info.title
   }
   
 }

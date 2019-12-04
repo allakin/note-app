@@ -22,8 +22,11 @@
 		735905D223489C6F00BD58A4 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735905D123489C6F00BD58A4 /* RegistrationViewController.swift */; };
 		735905D42348F1E300BD58A4 /* ExtentionValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735905D32348F1E300BD58A4 /* ExtentionValid.swift */; };
 		737D19B62360D9E300563F05 /* CreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D19B52360D9E300563F05 /* CreateArticleViewController.swift */; };
+		738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */; };
+		738C567823984450008EA0C2 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C567723984450008EA0C2 /* ArticleModel.swift */; };
 		739F7C90236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */; };
 		739F7C92236DD06500E07FF2 /* AccessInPhotoArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */; };
+		73CBA462238A982000F5B4E1 /* ReferenceOnFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */; };
 		73F1CFAE2352A801001900DC /* HelperDeviceName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F1CFAD2352A801001900DC /* HelperDeviceName.swift */; };
 		F0B84D2C3C77E6CBAEC63A47 /* Pods_notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691AFB4EA5175AD919B6D673 /* Pods_notes.framework */; };
 /* End PBXBuildFile section */
@@ -48,8 +51,11 @@
 		735905D123489C6F00BD58A4 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		735905D32348F1E300BD58A4 /* ExtentionValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionValid.swift; sourceTree = "<group>"; };
 		737D19B52360D9E300563F05 /* CreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArticleViewController.swift; sourceTree = "<group>"; };
+		738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCatalogCollectionViewControllerDataSourse.swift; sourceTree = "<group>"; };
+		738C567723984450008EA0C2 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpretionCreateArticleViewController.swift; sourceTree = "<group>"; };
 		739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessInPhotoArticle.swift; sourceTree = "<group>"; };
+		73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceOnFirebase.swift; sourceTree = "<group>"; };
 		73F1CFAD2352A801001900DC /* HelperDeviceName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperDeviceName.swift; sourceTree = "<group>"; };
 		FB8567E9862DCAC060F90F43 /* Pods-notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notes.release.xcconfig"; path = "Target Support Files/Pods-notes/Pods-notes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +112,9 @@
 				737D19B52360D9E300563F05 /* CreateArticleViewController.swift */,
 				739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */,
 				739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */,
+				73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */,
+				738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */,
+				738C567723984450008EA0C2 /* ArticleModel.swift */,
 			);
 			path = notes;
 			sourceTree = "<group>";
@@ -252,9 +261,12 @@
 				731F9E11234FD024001D448C /* NotesCatalogCollectionViewCell.swift in Sources */,
 				733FD77823412E8A00A2DFAF /* LoginViewController.swift in Sources */,
 				731F9E0F234FCFF0001D448C /* NotesCatalogCollectionViewController.swift in Sources */,
+				738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */,
+				738C567823984450008EA0C2 /* ArticleModel.swift in Sources */,
 				733708A723492EA200985AB6 /* Color.swift in Sources */,
 				739F7C92236DD06500E07FF2 /* AccessInPhotoArticle.swift in Sources */,
 				735905D42348F1E300BD58A4 /* ExtentionValid.swift in Sources */,
+				73CBA462238A982000F5B4E1 /* ReferenceOnFirebase.swift in Sources */,
 				739F7C90236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift in Sources */,
 				733FD77623412CF600A2DFAF /* StartScreenViewController.swift in Sources */,
 			);

@@ -7,17 +7,26 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateArticleViewController: UIViewController {
+  
   @IBOutlet weak var labelArticle: UITextView!
   @IBOutlet weak var descriptionArticle: UITextView!
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var buttonForEditingCover: UIButton!
   @IBOutlet weak var articleImageCover: UIImageView!
-  
+  @IBOutlet weak var saveArticleButtonOutlet: UIButton!
   @IBOutlet weak var textVIew: UITextView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    saveArticleButtonOutlet.layer.cornerRadius = 30
+    saveArticleButtonOutlet.layer.shadowColor = UIColor.LightOrangeColor.cgColor
+    saveArticleButtonOutlet.layer.shadowOpacity = 1
+    saveArticleButtonOutlet.layer.shadowOffset = .init(width: 0, height: 7)
+    saveArticleButtonOutlet.layer.shadowRadius = 7
     
     //add placeholder
     labelArticle.text = "Заголовок"
@@ -52,5 +61,24 @@ class CreateArticleViewController: UIViewController {
     print("work")
     showAlert()
   }
-
+  
+  @IBAction func saveArticleButtonAction(_ sender: Any) {
+    dismiss(animated: true) {
+      self.saveDataInFireBase()
+    }
+  }
+  
+  func saveDataInFireBase() {
+    guard let title = labelArticle.text,
+      let description = descriptionArticle.text else { return }
+    
+    let data = ["labelArticle": title,
+                "descriptionArticle": description]
+    Reference().correctReference().child(FirebaseEntity.articles.rawValue)
+      .child(Reference().returnUserID()).childByAutoId().setValue(data)
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
+    print("work")
+  }
+  
 }
+

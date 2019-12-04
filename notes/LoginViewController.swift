@@ -81,6 +81,8 @@ class LoginViewController: UIViewController {
       } else {
         DispatchQueue.main.async {
           let registration = self.storyboard?.instantiateViewController(withIdentifier: "NotesCatalogCollectionViewController") as! NotesCatalogCollectionViewController
+//          registration.isViewLoaded = true
+          registration.modalPresentationStyle = .fullScreen
           self.present(registration, animated: true, completion: nil)
           print("Успешный вход")
         }

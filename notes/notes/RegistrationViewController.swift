@@ -128,13 +128,23 @@ class RegistrationViewController: UIViewController {
       email.trimmingCharacters(in: .whitespacesAndNewlines)
       password.trimmingCharacters(in: .whitespacesAndNewlines)
       
+      let note_image_cover = ""
+      let note_title = ""
+      let note_description = ""
+      
+      
       Auth.auth().createUser(withEmail: email, password: password) { (results, err) in
         if err != nil {
           print("Error creating user")
         } else {
           //Create the user
           let db = Firestore.firestore()
-          db.collection("users").addDocument(data: ["first_name" : firstName, "last_name" : lastName, "uid": results!.user.uid]) { (error) in
+          db.collection("users").addDocument(data: ["first_name" : firstName,
+                                                    "last_name" : lastName,
+                                                    "uid": results!.user.uid,
+                                                    "notes": ["note_image_cover": "Привет!",
+                                                             "note_title": "Как дела?",
+                                                             "note_description": "ДА ДА"]]) { (error) in
             if error != nil {
               print("user data couldn't save")
             }
@@ -143,6 +153,7 @@ class RegistrationViewController: UIViewController {
           
           DispatchQueue.main.async {
             let registration = self.storyboard?.instantiateViewController(withIdentifier: "NotesCatalogCollectionViewController") as! NotesCatalogCollectionViewController
+            registration.modalPresentationStyle = .fullScreen
             self.present(registration, animated: true, completion: nil)
             print("User was create successfully")
           }

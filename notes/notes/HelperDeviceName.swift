@@ -15,3 +15,7 @@ enum DeviceName: String{
   case iPhone8Plus = "iPhone 8 Plus"
   case iPhone8 = "iPhone 8"
 }
+
+enum FirebaseEntity: String {
+  case articles = "articles"
+}
