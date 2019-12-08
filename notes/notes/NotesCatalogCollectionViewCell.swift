@@ -106,6 +106,9 @@ class NotesCatalogCollectionViewCell: UICollectionViewCell {
   
   func refresh(info: Articles) {
     textLabel.text = info.title
+    DataProvider.shared.downloadImageInCache(url: info.coverImage ?? "") { (image) in
+      self.noteImage.image = image
+    }
   }
   
 }

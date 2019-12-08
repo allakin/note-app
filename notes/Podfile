@@ -13,4 +13,5 @@ target 'notes' do
   pod 'Firebase/Firestore'
   pod 'IQKeyboardManager'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 end

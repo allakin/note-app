@@ -11,10 +11,12 @@ import Foundation
 struct Articles {
   var title: String?
   var description: String?
+  var coverImage: String?
   
   init(dict: NSDictionary) {
     title = dict.value(forKeyPath: "labelArticle") as? String
     description = dict.value(forKeyPath: "descriptionArticle") as? String
+    coverImage = dict.value(forKeyPath: "articleCoverImage") as? String
   }
   
 }
