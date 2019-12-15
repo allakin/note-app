@@ -22,11 +22,11 @@ class CreateArticleViewController: UIViewController {
   var titleOFArticle: String = ""
   var imageOFArticle: String = ""
   var descriptionOFArticle: String = ""
+  var keyID: String = ""
+  var articleIsChanced = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-//    print(te)
     
     saveArticleButtonOutlet.layer.cornerRadius = 30
     saveArticleButtonOutlet.layer.shadowColor = UIColor.LightOrangeColor.cgColor
@@ -34,23 +34,27 @@ class CreateArticleViewController: UIViewController {
     saveArticleButtonOutlet.layer.shadowOffset = .init(width: 0, height: 7)
     saveArticleButtonOutlet.layer.shadowRadius = 7
     
-    DataProvider.shared.downloadImageInCache(url: imageOFArticle ?? "") { (image) in
+    DataProvider.shared.downloadImageInCache(url: imageOFArticle) { (image) in
       self.articleImageCover.image = image
     }
     
     //add placeholder
     if titleOFArticle == "" {
+      articleIsChanced = false
       labelArticle.text = "Заголовок"
       labelArticle.textColor = UIColor.lightGray
     } else {
+      articleIsChanced = true
       labelArticle.text = titleOFArticle
       labelArticle.textColor = UIColor.black
     }
     
     if descriptionOFArticle == "" {
+      articleIsChanced = false
       descriptionArticle.text = "Описание"
       descriptionArticle.textColor = UIColor.lightGray
     } else {
+      articleIsChanced = true
       descriptionArticle.text = titleOFArticle
       descriptionArticle.textColor = UIColor.black
     }
@@ -85,16 +89,29 @@ class CreateArticleViewController: UIViewController {
   
   @IBAction func saveArticleButtonAction(_ sender: Any) {
     dismiss(animated: true) {
-      self.saveDataInFireBase()
+      switch self.articleIsChanced {
+      case false:
+        if self.labelArticle.text == "Заголовок" && self.descriptionArticle.text == "Описание" {
+          self.dismiss(animated: true, completion: nil)
+        } else {
+          self.saveDataInFireBase()
+        }
+      case true:
+        self.updateDataBase()
+      default:
+        break
+      }
     }
   }
   
-  func saveDataInFireBase() {
+  func updateDataBase() {
     guard let title = labelArticle.text,
-      let description = descriptionArticle.text, let image = articleImageCover.image else { return }
-
-    let storageReference = Storage.storage().reference().child("ArticlesCoverFolder").child("\(image)")
-//    let imageName = UUID().uuidString
+      let description = descriptionArticle.text,
+      let image = articleImageCover.image else { return }
+    
+    let storageReference = Storage.storage().reference()
+      .child(FirebaseEntity.articlesCoverFolder.rawValue).child("\(image)")
+    
     if let profileImage = self.articleImageCover.image,
       let uploadData = profileImage.jpegData(compressionQuality: 0.1) {
       
@@ -112,10 +129,56 @@ class CreateArticleViewController: UIViewController {
           }
           
           guard let url = url else { return }
-          let data = ["labelArticle": title,
-                      "descriptionArticle": description, "articleCoverImage": url.absoluteString]
+          guard let key = Reference().correctReference()
+            .child(FirebaseEntity.articles.rawValue)
+            .child(Reference().returnUserID())
+            .child(self.keyID).key else { return }
+          let post = [StoreKey.labelArticle.rawValue: title,
+                      StoreKey.descriptionArticle.rawValue: description,
+                      StoreKey.keyID.rawValue: self.keyID,
+                      StoreKey.articleCoverImage.rawValue: url.absoluteString]
+          let childUpdates = ["/\(FirebaseEntity.articles.rawValue)/\(Reference().returnUserID())/\(key)/": post]
+          Reference().correctReference().updateChildValues(childUpdates)
+          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
+          print("Data Changed")
+        })
+      })
+    }
+  }
+  
+  
+  
+  func saveDataInFireBase() {
+    guard let title = labelArticle.text,
+      let description = descriptionArticle.text, let image = articleImageCover.image else { return }
+
+    let storageReference = Storage.storage().reference()
+    .child(FirebaseEntity.articlesCoverFolder.rawValue).child("\(image)")
+    
+    if let profileImage = self.articleImageCover.image,
+      let uploadData = profileImage.jpegData(compressionQuality: 0.1) {
+      
+      storageReference.putData(uploadData, metadata: nil, completion: { (_, error) in
+        
+        if let error = error {
+          print(error)
+          return
+        }
+        
+        storageReference.downloadURL(completion: { (url, err) in
+          if let err = err {
+            print(err)
+            return
+          }
+          
+          guard let url = url else { return }
+          let keyID = Reference().correctReference().childByAutoId().key
+          let data = [StoreKey.labelArticle.rawValue: title,
+                      StoreKey.descriptionArticle.rawValue: description,
+                      StoreKey.articleCoverImage.rawValue: url.absoluteString,
+                      StoreKey.keyID.rawValue: keyID]
           Reference().correctReference().child(FirebaseEntity.articles.rawValue)
-            .child(Reference().returnUserID()).childByAutoId().setValue(data)
+            .child(Reference().returnUserID()).child(keyID ?? "").setValue(data)
           NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
           print("Data Saved!")
         })

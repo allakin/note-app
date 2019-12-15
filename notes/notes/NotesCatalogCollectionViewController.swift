@@ -92,6 +92,7 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
         detail.titleOFArticle = userArticles[indexPath!.item].title ?? "Нет данных!"
         detail.imageOFArticle = userArticles[indexPath!.item].coverImage ?? ""
         detail.descriptionOFArticle = userArticles[indexPath!.item].description ?? "Нет данных!"
+        detail.keyID = userArticles[indexPath!.item].keyID ?? ""
       }
     }
   }
