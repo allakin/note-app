@@ -26,6 +26,7 @@ extension NotesCatalogCollectionViewController {
     cell.layer.shadowOffset = .init(width: 2, height: 7)
     cell.layer.shadowRadius = 7
     let info = userArticles[indexPath.item]
+    
     cell.refresh(info: info)
     print(userArticles)
     return cell

@@ -44,19 +44,19 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
   func getData() {
     Reference().correctReference().child(FirebaseEntity.articles.rawValue)
       .child(Reference().returnUserID()).observeSingleEvent(of: .value, with: { (snapshot) in
-      
-      guard let data = snapshot.value as? NSDictionary else {return}
-      for value in data.allValues{
-        let infoItem = Articles(dict: value as! NSDictionary)
-        self.userArticles.append(infoItem)
-        self.collectionView.reloadData()
-        print(value)
-        print(self.userArticles)
-      }
-      
-      // ...
-    }) { (error) in
-      print(error.localizedDescription)
+        
+        guard let data = snapshot.value as? NSDictionary else {return}
+        for value in data.allValues{
+          let infoItem = Articles(dict: value as! NSDictionary)
+          self.userArticles.append(infoItem)
+          self.collectionView.reloadData()
+          print(value)
+          print(self.userArticles)
+        }
+        
+        // ...
+      }) { (error) in
+        print(error.localizedDescription)
     }
   }
   
@@ -78,10 +78,21 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
     buttonTest.heightAnchor.constraint(equalToConstant: 60).isActive = true
     buttonTest.widthAnchor.constraint(equalToConstant: 60).isActive = true
   }
-
+  
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     performSegue(withIdentifier: "PresentArticle", sender: self)
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "PresentArticle" {
+      let detail = segue.destination as! CreateArticleViewController
+      if let indexPaths = collectionView.indexPathsForSelectedItems {
+        let indexPath = indexPaths.first as? NSIndexPath
+        detail.titleOFArticle = userArticles[indexPath!.item].title ?? "Нет данных!"
+        detail.imageOFArticle = userArticles[indexPath!.item].coverImage ?? ""
+        detail.descriptionOFArticle = userArticles[indexPath!.item].description ?? "Нет данных!"
+      }
+    }
+  }
 }

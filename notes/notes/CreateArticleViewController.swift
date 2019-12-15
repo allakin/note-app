@@ -19,8 +19,14 @@ class CreateArticleViewController: UIViewController {
   @IBOutlet weak var saveArticleButtonOutlet: UIButton!
   @IBOutlet weak var textVIew: UITextView!
   
+  var titleOFArticle: String = ""
+  var imageOFArticle: String = ""
+  var descriptionOFArticle: String = ""
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+//    print(te)
     
     saveArticleButtonOutlet.layer.cornerRadius = 30
     saveArticleButtonOutlet.layer.shadowColor = UIColor.LightOrangeColor.cgColor
@@ -28,11 +34,26 @@ class CreateArticleViewController: UIViewController {
     saveArticleButtonOutlet.layer.shadowOffset = .init(width: 0, height: 7)
     saveArticleButtonOutlet.layer.shadowRadius = 7
     
+    DataProvider.shared.downloadImageInCache(url: imageOFArticle ?? "") { (image) in
+      self.articleImageCover.image = image
+    }
+    
     //add placeholder
-    labelArticle.text = "Заголовок"
-    labelArticle.textColor = UIColor.lightGray
-    descriptionArticle.text = "Описание"
-    descriptionArticle.textColor = UIColor.lightGray
+    if titleOFArticle == "" {
+      labelArticle.text = "Заголовок"
+      labelArticle.textColor = UIColor.lightGray
+    } else {
+      labelArticle.text = titleOFArticle
+      labelArticle.textColor = UIColor.black
+    }
+    
+    if descriptionOFArticle == "" {
+      descriptionArticle.text = "Описание"
+      descriptionArticle.textColor = UIColor.lightGray
+    } else {
+      descriptionArticle.text = titleOFArticle
+      descriptionArticle.textColor = UIColor.black
+    }
     //<-end
     
     //add chage textview
