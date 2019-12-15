@@ -27,7 +27,7 @@ class CreateArticleViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    view.overrideUserInterfaceStyle = .light
     saveArticleButtonOutlet.layer.cornerRadius = 30
     saveArticleButtonOutlet.layer.shadowColor = UIColor.LightOrangeColor.cgColor
     saveArticleButtonOutlet.layer.shadowOpacity = 1

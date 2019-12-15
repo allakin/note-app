@@ -30,6 +30,7 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.overrideUserInterfaceStyle = .light
     getData()
     settingButton()
     NotificationCenter.default.addObserver(self, selector: #selector(loadList),
