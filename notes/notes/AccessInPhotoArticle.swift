@@ -29,6 +29,7 @@ extension CreateArticleViewController: UIImagePickerControllerDelegate, UINaviga
     if UIImagePickerController.isSourceTypeAvailable(sourceType) {
       let imagePickerController = UIImagePickerController()
       imagePickerController.delegate = self
+      imagePickerController.sourceType = sourceType
       self.present(imagePickerController, animated: true, completion: nil)
     }
   }

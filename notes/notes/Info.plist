@@ -60,9 +60,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>Camera Usage Description</key>
-	<string></string>
 	<key>Photo Library Usage Description</key>
 	<string>take a photo</string>
+	<key>Camera Usage Description</key>
+	<string>take a photo</string>
+	<key>NSCameraUsageDescription</key>
+	<string>I want to access in mu camera</string>
 </dict>
 </plist>
