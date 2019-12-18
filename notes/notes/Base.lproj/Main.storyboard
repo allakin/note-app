@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -321,6 +321,17 @@
                                     <action selector="saveArticleButtonAction:" destination="8ki-eZ-cEz" eventType="touchUpInside" id="aYm-XF-4lt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kwl-Mp-K7k">
+                                <rect key="frame" x="20" y="587" width="60" height="60"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="lDo-yv-nzi"/>
+                                    <constraint firstAttribute="height" constant="60" id="nbj-Ms-AG5"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="deleteArticleButtonAction:" destination="8ki-eZ-cEz" eventType="touchUpInside" id="Cqm-J5-lS5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -328,7 +339,9 @@
                             <constraint firstItem="9s6-Ja-dcJ" firstAttribute="bottom" secondItem="6kf-Ro-G06" secondAttribute="bottom" constant="20" id="CQA-Vc-tfV"/>
                             <constraint firstItem="9s6-Ja-dcJ" firstAttribute="bottom" secondItem="R9L-lp-K2z" secondAttribute="bottom" id="EvB-iy-8vs"/>
                             <constraint firstItem="9s6-Ja-dcJ" firstAttribute="trailing" secondItem="R9L-lp-K2z" secondAttribute="trailing" id="NgP-iZ-VzS"/>
+                            <constraint firstItem="Kwl-Mp-K7k" firstAttribute="leading" secondItem="9s6-Ja-dcJ" secondAttribute="leading" constant="20" id="Qcq-Xn-4OX"/>
                             <constraint firstItem="9s6-Ja-dcJ" firstAttribute="trailing" secondItem="6kf-Ro-G06" secondAttribute="trailing" constant="20" id="bP1-SV-tHs"/>
+                            <constraint firstItem="9s6-Ja-dcJ" firstAttribute="bottom" secondItem="Kwl-Mp-K7k" secondAttribute="bottom" constant="20" id="frA-A3-51t"/>
                             <constraint firstItem="R9L-lp-K2z" firstAttribute="top" secondItem="9s6-Ja-dcJ" secondAttribute="top" id="jop-UT-3r8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9s6-Ja-dcJ"/>
@@ -337,6 +350,7 @@
                     <connections>
                         <outlet property="articleImageCover" destination="pc1-2b-UkO" id="xNE-Uu-Jmg"/>
                         <outlet property="buttonForEditingCover" destination="Qsp-Se-SUf" id="ysw-yX-tCA"/>
+                        <outlet property="deleteArticleButtonOutlet" destination="Kwl-Mp-K7k" id="AEV-IH-EEO"/>
                         <outlet property="descriptionArticle" destination="8Kw-3Y-fNW" id="ytp-po-Itk"/>
                         <outlet property="labelArticle" destination="hC6-UG-sl3" id="ggb-Rt-TxH"/>
                         <outlet property="saveArticleButtonOutlet" destination="6kf-Ro-G06" id="xbe-et-D5T"/>

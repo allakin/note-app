@@ -17,7 +17,7 @@ class CreateArticleViewController: UIViewController {
   @IBOutlet weak var buttonForEditingCover: UIButton!
   @IBOutlet weak var articleImageCover: UIImageView!
   @IBOutlet weak var saveArticleButtonOutlet: UIButton!
-  @IBOutlet weak var textVIew: UITextView!
+  @IBOutlet weak var deleteArticleButtonOutlet: UIButton!
   
   var titleOFArticle: String = ""
   var imageOFArticle: String = ""
@@ -28,11 +28,18 @@ class CreateArticleViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.overrideUserInterfaceStyle = .light
+    
     saveArticleButtonOutlet.layer.cornerRadius = 30
     saveArticleButtonOutlet.layer.shadowColor = UIColor.LightOrangeColor.cgColor
     saveArticleButtonOutlet.layer.shadowOpacity = 1
     saveArticleButtonOutlet.layer.shadowOffset = .init(width: 0, height: 7)
     saveArticleButtonOutlet.layer.shadowRadius = 7
+    
+    deleteArticleButtonOutlet.layer.cornerRadius = 30
+    deleteArticleButtonOutlet.layer.shadowColor = UIColor.lightGray.cgColor
+    deleteArticleButtonOutlet.layer.shadowOpacity = 1
+    deleteArticleButtonOutlet.layer.shadowOffset = .init(width: 0, height: 7)
+    deleteArticleButtonOutlet.layer.shadowRadius = 7
     
     DataProvider.shared.downloadImageInCache(url: imageOFArticle) { (image) in
       self.articleImageCover.image = image
@@ -43,6 +50,8 @@ class CreateArticleViewController: UIViewController {
       articleIsChanced = false
       labelArticle.text = "Заголовок"
       labelArticle.textColor = UIColor.lightGray
+      deleteArticleButtonOutlet.isHidden = true
+      deleteArticleButtonOutlet.isEnabled = false
     } else {
       articleIsChanced = true
       labelArticle.text = titleOFArticle
@@ -53,12 +62,19 @@ class CreateArticleViewController: UIViewController {
       articleIsChanced = false
       descriptionArticle.text = "Описание"
       descriptionArticle.textColor = UIColor.lightGray
+      deleteArticleButtonOutlet.isHidden = true
+      deleteArticleButtonOutlet.isEnabled = false
     } else {
       articleIsChanced = true
       descriptionArticle.text = titleOFArticle
       descriptionArticle.textColor = UIColor.black
     }
     //<-end
+    
+    if keyID != "" {
+      deleteArticleButtonOutlet.isHidden = false
+      deleteArticleButtonOutlet.isEnabled = true
+    }
     
     //add chage textview
     //    labelNameTest.font = UIFont.preferredFont(forTextStyle: .title1)
@@ -86,6 +102,20 @@ class CreateArticleViewController: UIViewController {
     print("work")
     showAlert()
   }
+  
+  @IBAction func deleteArticleButtonAction(_ sender: Any) {
+    Reference().correctReference()
+      .child(FirebaseEntity.articles.rawValue)
+      .child(Reference().returnUserID()).child(keyID).removeValue { (error, _) in
+        if let error = error {
+          print(error.localizedDescription)
+        }
+        self.dismiss(animated: true) {
+          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
+        }
+    }
+  }
+  
   
   @IBAction func saveArticleButtonAction(_ sender: Any) {
     dismiss(animated: true) {
