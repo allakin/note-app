@@ -115,7 +115,7 @@ class RegistrationViewController: UIViewController {
   }
   
   @IBAction func signUpTapped(_ sender: Any) {
-    
+    view.activityStartAnimating(activityColor: .LightOrangeColor)
     //Validate the fields
     let error = validateFields()
     if error != "" && emailValidState != false && passwordValidState != false{
@@ -127,12 +127,7 @@ class RegistrationViewController: UIViewController {
       firstName.trimmingCharacters(in: .whitespacesAndNewlines)
       lastName.trimmingCharacters(in: .whitespacesAndNewlines)
       email.trimmingCharacters(in: .whitespacesAndNewlines)
-      password.trimmingCharacters(in: .whitespacesAndNewlines)
-      
-      let note_image_cover = ""
-      let note_title = ""
-      let note_description = ""
-      
+      password.trimmingCharacters(in: .whitespacesAndNewlines)      
       
       Auth.auth().createUser(withEmail: email, password: password) { (results, err) in
         if err != nil {
@@ -156,6 +151,7 @@ class RegistrationViewController: UIViewController {
             let registration = self.storyboard?.instantiateViewController(withIdentifier: "NotesCatalogCollectionViewController") as! NotesCatalogCollectionViewController
             registration.modalPresentationStyle = .fullScreen
             self.present(registration, animated: true, completion: nil)
+            self.view.activityStopAnimating()
             print("User was create successfully")
           }
         }
