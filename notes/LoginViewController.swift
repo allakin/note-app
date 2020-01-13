@@ -13,20 +13,42 @@ import FirebaseAuth
 class LoginViewController: UIViewController {
   
   @IBOutlet weak var textLabel: UILabel!
+  @IBOutlet weak var checkBoxButton: UIButton!
+  @IBOutlet weak var checkBoxViewContainer: UIView!
+  
   
   let emailTextField = HoshiTextField()
   let passwordTextField = HoshiTextField()
+//  var stateCheckbox = false
+  let userDefault = UserDefaults.standard
   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.overrideUserInterfaceStyle = .light
+    checkBoxViewContainer.translatesAutoresizingMaskIntoConstraints = false
     setingEmailField()
     setingUIElements()
+    
+    
+    if userDefault.bool(forKey: "stateCheckbox") == false {
+      checkboxOFF()
+    } else {
+      self.view.activityStartAnimating(activityColor: UIColor.LightOrangeColor)
+      emailTextField.text = userDefault.string(forKey: "userLogin")
+      passwordTextField.text = userDefault.string(forKey: "userPassword")
+      checkBoxButton.backgroundColor = UIColor.LightOrangeColor
+      
+      let userDefaultsUserLogin = userDefault.string(forKey: "userLogin")
+      let userDefaultsUserPassword = userDefault.string(forKey: "userPassword")
+      guard let email = userDefaultsUserLogin, let password = userDefaultsUserPassword else {return}
+      userLogin(email: email, password: password)
+    }
   }
   
   func setingEmailField() {
     view.addSubview(emailTextField)
     view.addSubview(passwordTextField)
+    
     emailTextField.placeholderColor = .TextGrayColor
     emailTextField.borderInactiveColor = .LightGrayColor
     emailTextField.borderActiveColor = .MainGreenColor
@@ -56,6 +78,11 @@ class LoginViewController: UIViewController {
     passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
     passwordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
     passwordTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    
+    checkBoxViewContainer.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20).isActive = true
+    checkBoxViewContainer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+    checkBoxViewContainer.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+    checkBoxViewContainer.heightAnchor.constraint(equalToConstant: 47).isActive = true
   }
   
   @objc func validateEmail() {
@@ -68,24 +95,45 @@ class LoginViewController: UIViewController {
     print(finalResult)
   }
   
+  @IBAction func checkBoxButtonAction(_ sender: Any) {
+    if userDefault.bool(forKey: "stateCheckbox") == true {
+      checkboxOFF()
+      print("Checkbox is false")
+    } else {
+      checkboxON()
+      print("Checkbox is true")
+    }
+  }
+  
   @IBAction func cancelTapped(_ sender: Any) {
     
     dismiss(animated: true, completion: nil)
   }
   @IBAction func signInTapped(_ sender: Any) {
-    guard let email = emailTextField.text, let password = passwordTextField.text else {return}
-    email.trimmingCharacters(in: .whitespacesAndNewlines)
-    password.trimmingCharacters(in: .whitespacesAndNewlines)
+    if userDefault.bool(forKey: "stateCheckbox") == false {
+      guard let email = emailTextField.text, let password = passwordTextField.text else {return}
+      email.trimmingCharacters(in: .whitespacesAndNewlines)
+      password.trimmingCharacters(in: .whitespacesAndNewlines)
+      userLogin(email: email, password: password)
+    } else {
+      let userDefaultsUserLogin = userDefault.string(forKey: "userLogin")
+      let userDefaultsUserPassword = userDefault.string(forKey: "userPassword")
+      guard let email = userDefaultsUserLogin, let password = userDefaultsUserPassword else {return}
+      userLogin(email: email, password: password)
+    }
+  }
+  
+  func userLogin(email: String, password: String) {
     Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
       if error != nil {
         print("Error in login \(error?.localizedDescription)")
       } else {
         DispatchQueue.main.async {
           let registration = self.storyboard?.instantiateViewController(withIdentifier: "NotesCatalogCollectionViewController") as! NotesCatalogCollectionViewController
-//          registration.isViewLoaded = true
           registration.modalPresentationStyle = .fullScreen
           self.present(registration, animated: true, completion: nil)
           print("Успешный вход")
+          self.view.activityStopAnimating()
         }
       }
     }

@@ -147,23 +147,60 @@
                                     <action selector="signInTapped:" destination="66P-51-WIq" eventType="touchUpInside" id="AWs-BC-fTR"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WLL-gR-mLD">
+                                <rect key="frame" x="0.0" y="334" width="375" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Запомнить меня" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd5-sl-lCm">
+                                        <rect key="frame" x="60" y="12" width="98" height="15"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YvF-hn-edO">
+                                        <rect key="frame" x="32" y="10" width="20" height="20"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="J3p-RY-wD8"/>
+                                            <constraint firstAttribute="width" constant="20" id="K6I-Co-Jvf"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="checkBoxButtonAction:" destination="66P-51-WIq" eventType="touchUpInside" id="ozt-r9-dNP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Bd5-sl-lCm" firstAttribute="top" secondItem="WLL-gR-mLD" secondAttribute="top" constant="12" id="6uv-lH-izl"/>
+                                    <constraint firstItem="YvF-hn-edO" firstAttribute="leading" secondItem="WLL-gR-mLD" secondAttribute="leading" constant="32" id="CHP-Tv-Fq5"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bd5-sl-lCm" secondAttribute="bottom" constant="13" id="FAB-3f-abx"/>
+                                    <constraint firstAttribute="height" constant="40" id="R8n-f1-FAc"/>
+                                    <constraint firstAttribute="bottom" secondItem="YvF-hn-edO" secondAttribute="bottom" constant="10" id="TCD-ht-hxv"/>
+                                    <constraint firstItem="Bd5-sl-lCm" firstAttribute="leading" secondItem="YvF-hn-edO" secondAttribute="trailing" constant="8" id="TYJ-MA-Me9"/>
+                                    <constraint firstItem="YvF-hn-edO" firstAttribute="top" secondItem="WLL-gR-mLD" secondAttribute="top" constant="10" id="hX2-BM-cVy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="siS-5q-C2H" firstAttribute="trailing" secondItem="svo-LL-ybK" secondAttribute="trailing" constant="47" id="1k2-6o-SEC"/>
                             <constraint firstItem="siS-5q-C2H" firstAttribute="trailing" secondItem="7aZ-5C-vZy" secondAttribute="trailing" constant="30" id="2fN-D0-ZCm"/>
                             <constraint firstItem="siS-5q-C2H" firstAttribute="bottom" secondItem="h1i-87-UIa" secondAttribute="bottom" constant="20" id="2zM-WJ-2Aa"/>
+                            <constraint firstItem="WLL-gR-mLD" firstAttribute="leading" secondItem="siS-5q-C2H" secondAttribute="leading" id="7BN-0Q-pje"/>
                             <constraint firstItem="siS-5q-C2H" firstAttribute="trailing" secondItem="h1i-87-UIa" secondAttribute="trailing" constant="150" id="CaO-6K-5oH"/>
                             <constraint firstItem="svo-LL-ybK" firstAttribute="top" secondItem="siS-5q-C2H" secondAttribute="top" constant="80" id="IFr-tr-9de"/>
                             <constraint firstItem="7aZ-5C-vZy" firstAttribute="leading" secondItem="siS-5q-C2H" secondAttribute="leading" constant="30" id="KDP-Ce-PFK"/>
                             <constraint firstItem="h1i-87-UIa" firstAttribute="top" secondItem="7aZ-5C-vZy" secondAttribute="bottom" constant="20" id="hxJ-qI-CBE"/>
                             <constraint firstItem="h1i-87-UIa" firstAttribute="leading" secondItem="siS-5q-C2H" secondAttribute="leading" constant="150" id="qDg-9M-ZsQ"/>
+                            <constraint firstItem="WLL-gR-mLD" firstAttribute="trailing" secondItem="siS-5q-C2H" secondAttribute="trailing" id="tbd-ud-pdu"/>
                             <constraint firstItem="svo-LL-ybK" firstAttribute="leading" secondItem="siS-5q-C2H" secondAttribute="leading" constant="47" id="yiQ-sO-wiI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="siS-5q-C2H"/>
                     </view>
                     <navigationItem key="navigationItem" id="h9D-sb-X8g"/>
                     <connections>
+                        <outlet property="checkBoxButton" destination="YvF-hn-edO" id="0hS-VM-k6G"/>
+                        <outlet property="checkBoxViewContainer" destination="WLL-gR-mLD" id="ZKl-rF-Xwb"/>
                         <outlet property="textLabel" destination="svo-LL-ybK" id="3TI-2Q-dK7"/>
                     </connections>
                 </viewController>
