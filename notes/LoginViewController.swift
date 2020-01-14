@@ -9,6 +9,7 @@
 import UIKit
 import TextFieldEffects
 import FirebaseAuth
+import FittedSheets
 
 class LoginViewController: UIViewController {
   
@@ -121,6 +122,17 @@ class LoginViewController: UIViewController {
       guard let email = userDefaultsUserLogin, let password = userDefaultsUserPassword else {return}
       userLogin(email: email, password: password)
     }
+  }
+  
+  @IBAction func ResetUserPassword(_ sender: Any) {
+    let controller = ResetPasswordViewController()
+    let sheetController = SheetViewController(controller: controller)
+    sheetController.handleColor = UIColor.white
+    sheetController.topCornersRadius = 25
+    sheetController.handleSize = CGSize(width: 50, height: 4)
+    sheetController.setSizes([.fixed(400)], animated: true)
+    // It is important to set animated to false or it behaves weird currently
+    self.present(sheetController, animated: false, completion: nil)
   }
   
   func userLogin(email: String, password: String) {

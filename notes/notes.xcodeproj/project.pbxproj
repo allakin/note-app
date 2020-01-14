@@ -30,6 +30,7 @@
 		73CBA462238A982000F5B4E1 /* ReferenceOnFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */; };
 		73CD11B023CB8DB8003390EF /* CheckboxSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD11AF23CB8DB8003390EF /* CheckboxSetting.swift */; };
 		73CD11B523CBB4AD003390EF /* ActivityIndicatory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD11B423CBB4AD003390EF /* ActivityIndicatory.swift */; };
+		73CD11B723CCF6FF003390EF /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD11B623CCF6FF003390EF /* ResetPasswordViewController.swift */; };
 		73F1CFAE2352A801001900DC /* HelperNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F1CFAD2352A801001900DC /* HelperNames.swift */; };
 		F0B84D2C3C77E6CBAEC63A47 /* Pods_notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691AFB4EA5175AD919B6D673 /* Pods_notes.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceOnFirebase.swift; sourceTree = "<group>"; };
 		73CD11AF23CB8DB8003390EF /* CheckboxSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxSetting.swift; sourceTree = "<group>"; };
 		73CD11B423CBB4AD003390EF /* ActivityIndicatory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatory.swift; sourceTree = "<group>"; };
+		73CD11B623CCF6FF003390EF /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		73F1CFAD2352A801001900DC /* HelperNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperNames.swift; sourceTree = "<group>"; };
 		FB8567E9862DCAC060F90F43 /* Pods-notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notes.release.xcconfig"; path = "Target Support Files/Pods-notes/Pods-notes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 				7363EEF6239D30D900872FAE /* DataProvider.swift */,
 				73CD11AF23CB8DB8003390EF /* CheckboxSetting.swift */,
 				73CD11B423CBB4AD003390EF /* ActivityIndicatory.swift */,
+				73CD11B623CCF6FF003390EF /* ResetPasswordViewController.swift */,
 			);
 			path = notes;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				7321318B234032680069B4C8 /* notes.xcdatamodeld in Sources */,
 				73CD11B023CB8DB8003390EF /* CheckboxSetting.swift in Sources */,
 				737D19B62360D9E300563F05 /* CreateArticleViewController.swift in Sources */,
+				73CD11B723CCF6FF003390EF /* ResetPasswordViewController.swift in Sources */,
 				7363EEF7239D30D900872FAE /* DataProvider.swift in Sources */,
 				731F9E11234FD024001D448C /* NotesCatalogCollectionViewCell.swift in Sources */,
 				733FD77823412E8A00A2DFAF /* LoginViewController.swift in Sources */,
