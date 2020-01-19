@@ -30,7 +30,6 @@ class LoginViewController: UIViewController {
     setingEmailField()
     setingUIElements()
     
-    
     if userDefault.bool(forKey: "stateCheckbox") == false {
       checkboxOFF()
     } else {
@@ -63,8 +62,9 @@ class LoginViewController: UIViewController {
     passwordTextField.borderInactiveColor = .LightGrayColor
     passwordTextField.borderActiveColor = .MainGreenColor
     passwordTextField.placeholder = "Пароль"
-    emailTextField.font = UIFont(name: "Helvetica", size: 16)
+    passwordTextField.font = UIFont(name: "Helvetica", size: 16)
     passwordTextField.placeholderFontScale = 1
+    passwordTextField.isSecureTextEntry = true
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     
     emailTextField.addTarget(self, action: #selector(validateEmail), for: .editingChanged)

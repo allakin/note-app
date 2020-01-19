@@ -30,4 +30,5 @@ extension LoginViewController {
     userDefault.removeObject(forKey: "stateCheckbox")
     userDefault.set(false, forKey: "stateCheckbox")
   }
+
 }
