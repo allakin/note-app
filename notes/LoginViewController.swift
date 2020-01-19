@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
     if userDefault.bool(forKey: "stateCheckbox") == false {
       checkboxOFF()
     } else {
-      self.view.activityStartAnimating(activityColor: UIColor.LightOrangeColor)
+      self.view.activityStartAnimating(activityColor: UIColor.LightOrangeColor, alpha: 0.6)
       emailTextField.text = userDefault.string(forKey: "userLogin")
       passwordTextField.text = userDefault.string(forKey: "userPassword")
       checkBoxButton.backgroundColor = UIColor.LightOrangeColor

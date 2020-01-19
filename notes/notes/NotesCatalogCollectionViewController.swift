@@ -43,6 +43,7 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
   }
   
   func getData() {
+    view.activityStartAnimating(activityColor: UIColor.LightOrangeColor, alpha: 0)
     Reference().correctReference().child(FirebaseEntity.articles.rawValue)
       .child(Reference().returnUserID()).observeSingleEvent(of: .value, with: { (snapshot) in
         
@@ -50,11 +51,11 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
         for value in data.allValues{
           let infoItem = Articles(dict: value as! NSDictionary)
           self.userArticles.append(infoItem)
+          self.view.activityStopAnimating()
           self.collectionView.reloadData()
           print(value)
           print(self.userArticles)
         }
-        
         // ...
       }) { (error) in
         print(error.localizedDescription)

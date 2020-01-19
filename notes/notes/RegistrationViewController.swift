@@ -115,7 +115,7 @@ class RegistrationViewController: UIViewController {
   }
   
   @IBAction func signUpTapped(_ sender: Any) {
-    view.activityStartAnimating(activityColor: .LightOrangeColor)
+    view.activityStartAnimating(activityColor: .LightOrangeColor, alpha: 0.6)
     //Validate the fields
     let error = validateFields()
     if error != "" && emailValidState != false && passwordValidState != false{
