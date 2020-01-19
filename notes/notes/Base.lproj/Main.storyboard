@@ -125,9 +125,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aZ-5C-vZy">
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aZ-5C-vZy">
                                 <rect key="frame" x="30" y="547" width="315" height="50"/>
-                                <color key="backgroundColor" red="0.99215686270000003" green="0.51372549020000002" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7aZ-5C-vZy" secondAttribute="height" multiplier="63:10" id="QjH-uy-X5K"/>
                                     <constraint firstAttribute="width" constant="315" id="dzu-cA-z8Z"/>
@@ -143,7 +143,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cx7-0a-sC4"/>
                                     <action selector="signInTapped:" destination="66P-51-WIq" eventType="touchUpInside" id="AWs-BC-fTR"/>
                                 </connections>
                             </button>
@@ -218,6 +217,7 @@
                     <connections>
                         <outlet property="checkBoxButton" destination="YvF-hn-edO" id="0hS-VM-k6G"/>
                         <outlet property="checkBoxViewContainer" destination="WLL-gR-mLD" id="ZKl-rF-Xwb"/>
+                        <outlet property="loginButton" destination="7aZ-5C-vZy" id="37C-aj-tF8"/>
                         <outlet property="textLabel" destination="svo-LL-ybK" id="3TI-2Q-dK7"/>
                     </connections>
                 </viewController>

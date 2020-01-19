@@ -16,12 +16,15 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var textLabel: UILabel!
   @IBOutlet weak var checkBoxButton: UIButton!
   @IBOutlet weak var checkBoxViewContainer: UIView!
+  @IBOutlet weak var loginButton: UIButton!
   
   
   let emailTextField = HoshiTextField()
   let passwordTextField = HoshiTextField()
 //  var stateCheckbox = false
   let userDefault = UserDefaults.standard
+  var emailCorrect = false
+  var passwordCorrect = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,6 +46,7 @@ class LoginViewController: UIViewController {
       guard let email = userDefaultsUserLogin, let password = userDefaultsUserPassword else {return}
       userLogin(email: email, password: password)
     }
+    
   }
   
   func setingEmailField() {
@@ -51,7 +55,7 @@ class LoginViewController: UIViewController {
     
     emailTextField.placeholderColor = .TextGrayColor
     emailTextField.borderInactiveColor = .LightGrayColor
-    emailTextField.borderActiveColor = .MainGreenColor
+    emailTextField.borderActiveColor = .LightBlueColor
     emailTextField.placeholder = "Email"
     emailTextField.font = UIFont(name: "Helvetica", size: 16)
     emailTextField.placeholderFontScale = 1
@@ -60,7 +64,7 @@ class LoginViewController: UIViewController {
     
     passwordTextField.placeholderColor = .TextGrayColor
     passwordTextField.borderInactiveColor = .LightGrayColor
-    passwordTextField.borderActiveColor = .MainGreenColor
+    passwordTextField.borderActiveColor = .LightBlueColor
     passwordTextField.placeholder = "Пароль"
     passwordTextField.font = UIFont(name: "Helvetica", size: 16)
     passwordTextField.placeholderFontScale = 1
@@ -90,11 +94,21 @@ class LoginViewController: UIViewController {
   
   @objc func validateEmail() {
     guard let finalResult = emailTextField.text?.isValid(.email) else {return}
+    emailCorrect = finalResult
+    correctFormWithLoginInformation()
+    if finalResult == true {
+      emailTextField.borderActiveColor = .MainGreenColor
+    }
     print(finalResult)
   }
   
   @objc func validatePassword() {
     guard let finalResult = passwordTextField.text?.isValid(.password) else {return}
+    passwordCorrect = finalResult
+    correctFormWithLoginInformation()
+    if finalResult == true {
+      passwordTextField.borderActiveColor = .MainGreenColor
+    }
     print(finalResult)
   }
   
@@ -109,9 +123,9 @@ class LoginViewController: UIViewController {
   }
   
   @IBAction func cancelTapped(_ sender: Any) {
-    
     dismiss(animated: true, completion: nil)
   }
+  
   @IBAction func signInTapped(_ sender: Any) {
     if userDefault.bool(forKey: "stateCheckbox") == false {
       guard let email = emailTextField.text, let password = passwordTextField.text else {return}
@@ -152,4 +166,13 @@ class LoginViewController: UIViewController {
       }
     }
   }
+  
+  func correctFormWithLoginInformation() {
+    if emailCorrect == true && passwordCorrect == true {
+         loginButton.isEnabled = true
+         loginButton.backgroundColor = .LightOrangeColor
+         loginButton.alpha = 1
+       }
+  }
+  
 }
