@@ -102,6 +102,14 @@ class LoginViewController: UIViewController {
     print(finalResult)
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.setNeedsStatusBarAppearanceUpdate()
+  }
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .darkContent
+  }
+  
   @objc func validatePassword() {
     guard let finalResult = passwordTextField.text?.isValid(.password) else {return}
     passwordCorrect = finalResult

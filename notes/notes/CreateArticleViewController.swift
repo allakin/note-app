@@ -93,6 +93,14 @@ class CreateArticleViewController: UIViewController {
     setupToHideKeyboardOnTapOnView()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.setNeedsStatusBarAppearanceUpdate()
+  }
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .darkContent
+  }
+  
   @IBAction func buttonPressed(_ sender: Any) {
     print("work")
     descriptionArticle.becomeFirstResponder()

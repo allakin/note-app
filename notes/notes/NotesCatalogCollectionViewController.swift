@@ -28,7 +28,7 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
     button.addTarget(self, action: #selector(createArticle), for: .touchUpInside)
     return button
   }()
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     view.overrideUserInterfaceStyle = .light
@@ -41,6 +41,14 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
     self.navigationController?.navigationBar.isTranslucent = true
     // Register cell classes
     self.collectionView!.register(NotesCatalogCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.setNeedsStatusBarAppearanceUpdate()
+  }
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .darkContent
   }
   
   func getData() {
