@@ -434,9 +434,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylx-3a-sNr">
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylx-3a-sNr">
                                 <rect key="frame" x="30" y="547" width="315" height="50"/>
-                                <color key="backgroundColor" red="0.33725490200000002" green="0.79215686269999996" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ylx-3a-sNr" secondAttribute="height" multiplier="63:10" id="8cg-1g-X16"/>
                                     <constraint firstAttribute="height" constant="50" id="yvT-Fq-z3S"/>
@@ -458,7 +458,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuR-JR-hJl">
                                 <rect key="frame" x="150" y="617" width="75" height="30"/>
                                 <state key="normal" title="ОТМЕНА">
-                                    <color key="titleColor" red="0.33725490200000002" green="0.79215686269999996" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.99215686270000003" green="0.51372549020000002" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="cancelTapped:" destination="66P-51-WIq" eventType="touchUpInside" id="gy3-kK-WIj"/>
@@ -481,6 +481,7 @@
                         <viewLayoutGuide key="safeArea" id="Cvd-zG-ydt"/>
                     </view>
                     <connections>
+                        <outlet property="registrationButton" destination="Ylx-3a-sNr" id="Mfz-Zi-qKD"/>
                         <outlet property="textLabel" destination="Pd9-of-g5v" id="Fdg-KQ-6Br"/>
                     </connections>
                 </viewController>

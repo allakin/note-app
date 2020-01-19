@@ -14,6 +14,7 @@ import FirebaseFirestore
 class RegistrationViewController: UIViewController {
 
   @IBOutlet weak var textLabel: UILabel!
+  @IBOutlet weak var registrationButton: UIButton!
   
   let emailTextField = HoshiTextField()
   let passwordTextField = HoshiTextField()
@@ -37,31 +38,35 @@ class RegistrationViewController: UIViewController {
     
     emailTextField.placeholderColor = .TextGrayColor
     emailTextField.borderInactiveColor = .LightGrayColor
-    emailTextField.borderActiveColor = .MainGreenColor
-    emailTextField.placeholder = "Логин"
+    emailTextField.borderActiveColor = .LightBlueColor
+    emailTextField.placeholder = "Email"
     emailTextField.placeholderFontScale = 1
+    emailTextField.font = UIFont(name: "Helvetica", size: 16)
     emailTextField.keyboardType = .emailAddress
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
     
     passwordTextField.placeholderColor = .TextGrayColor
     passwordTextField.borderInactiveColor = .LightGrayColor
-    passwordTextField.borderActiveColor = .MainGreenColor
+    passwordTextField.borderActiveColor = .LightBlueColor
     passwordTextField.placeholder = "Пароль"
     passwordTextField.placeholderFontScale = 1
+    passwordTextField.font = UIFont(name: "Helvetica", size: 16)
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     
     firstNameTextField.placeholderColor = .TextGrayColor
     firstNameTextField.borderInactiveColor = .LightGrayColor
-    firstNameTextField.borderActiveColor = .MainGreenColor
+    firstNameTextField.borderActiveColor = .LightBlueColor
     firstNameTextField.placeholder = "Имя пользователя"
     firstNameTextField.placeholderFontScale = 1
+    firstNameTextField.font = UIFont(name: "Helvetica", size: 16)
     firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
     
     lastNameTextField.placeholderColor = .TextGrayColor
     lastNameTextField.borderInactiveColor = .LightGrayColor
-    lastNameTextField.borderActiveColor = .MainGreenColor
-    lastNameTextField.placeholder = "Фамилию пользователя"
+    lastNameTextField.borderActiveColor = .LightBlueColor
+    lastNameTextField.placeholder = "Фамилия пользователя"
     lastNameTextField.placeholderFontScale = 1
+    lastNameTextField.font = UIFont(name: "Helvetica", size: 16)
     lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
     
     emailTextField.addTarget(self, action: #selector(validateEmail), for: .editingChanged)
@@ -93,14 +98,30 @@ class RegistrationViewController: UIViewController {
   @objc func validateEmail() {
     guard let finalResult = emailTextField.text?.isValid(.email) else {return}
     emailValidState = finalResult
+    if finalResult == true {
+      emailTextField.borderActiveColor = .MainGreenColor
+      correctFormWithLoginInformation()
+    }
     print(finalResult)
    }
    
    @objc func validatePassword() {
     guard let finalResult = passwordTextField.text?.isValid(.password) else {return}
     passwordValidState = finalResult
+    if finalResult == true {
+      passwordTextField.borderActiveColor = .MainGreenColor
+      correctFormWithLoginInformation()
+    }
     print(finalResult)
    }
+  
+  func correctFormWithLoginInformation() {
+    if emailValidState == true && passwordValidState == true {
+         registrationButton.isEnabled = true
+         registrationButton.backgroundColor = .LightOrangeColor
+         registrationButton.alpha = 1
+       }
+  }
   
   func validateFields() -> String {
     //проверка полей на заполненость
