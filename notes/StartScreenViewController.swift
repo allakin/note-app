@@ -9,10 +9,25 @@
 import UIKit
 
 class StartScreenViewController: UIViewController {
+  
+  let userDefault = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
       view.overrideUserInterfaceStyle = .light
+      
+      if userDefault.bool(forKey: "stateCheckbox") == true {
+        view.activityStartAnimating(activityColor: .LightOrangeColor, alpha: 0.6)
+        DispatchQueue.main.async {
+          let registration = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+          registration.modalPresentationStyle = .fullScreen
+          self.view.activityStopAnimating()
+          self.present(registration, animated: true, completion: nil)
+          print("Успешный вход")
+        }
+      }
+      
+      
     }
     
 
