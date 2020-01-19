@@ -54,6 +54,7 @@ class LoginViewController: UIViewController {
     emailTextField.borderInactiveColor = .LightGrayColor
     emailTextField.borderActiveColor = .MainGreenColor
     emailTextField.placeholder = "Email"
+    emailTextField.font = UIFont(name: "Helvetica", size: 16)
     emailTextField.placeholderFontScale = 1
     emailTextField.keyboardType = .emailAddress
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +63,7 @@ class LoginViewController: UIViewController {
     passwordTextField.borderInactiveColor = .LightGrayColor
     passwordTextField.borderActiveColor = .MainGreenColor
     passwordTextField.placeholder = "Пароль"
+    emailTextField.font = UIFont(name: "Helvetica", size: 16)
     passwordTextField.placeholderFontScale = 1
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     

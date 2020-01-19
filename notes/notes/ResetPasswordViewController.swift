@@ -46,6 +46,7 @@ class ResetPasswordViewController: UIViewController {
     emailTextField.borderActiveColor = .MainGreenColor
     emailTextField.textColor = .TextGrayColor
     emailTextField.placeholder = "Укажите ваш Email"
+    emailTextField.font = UIFont(name: "Helvetica", size: 16)
     emailTextField.placeholderFontScale = 1
     emailTextField.keyboardType = .emailAddress
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
