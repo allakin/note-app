@@ -14,7 +14,7 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
   var userArticles = [Articles]()
   let reuseIdentifier = "Cell"
   
-  let buttonTest: UIButton = {
+  let createArticleButton: UIButton = {
     let button = UIButton()
     button.layer.cornerRadius = 10
     button.layer.shadowColor = UIColor.MainGreenColor.cgColor
@@ -24,6 +24,7 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
     button.translatesAutoresizingMaskIntoConstraints = false
     button.backgroundColor = .MainGreenColor
     button.layer.cornerRadius = 30
+    button.setImage(#imageLiteral(resourceName: "create-article"), for: .normal)
     button.addTarget(self, action: #selector(createArticle), for: .touchUpInside)
     return button
   }()
@@ -74,11 +75,11 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
   }
   
   func settingButton () {
-    view.addSubview(buttonTest)
-    buttonTest.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
-    buttonTest.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
-    buttonTest.heightAnchor.constraint(equalToConstant: 60).isActive = true
-    buttonTest.widthAnchor.constraint(equalToConstant: 60).isActive = true
+    view.addSubview(createArticleButton)
+    createArticleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+    createArticleButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+    createArticleButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+    createArticleButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
   }
   
   
