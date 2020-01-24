@@ -9,10 +9,15 @@
 import UIKit
 import Firebase
 
+protocol NotesCatalogCollectionViewControllerDelegate {
+  func toggleMenu()
+}
+
 class NotesCatalogCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   var userArticles = [Articles]()
   let reuseIdentifier = "Cell"
+  var delegate: NotesCatalogCollectionViewControllerDelegate?
   
   let createArticleButton: UIButton = {
     let button = UIButton()
@@ -47,6 +52,7 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
     super.viewWillAppear(animated)
     self.setNeedsStatusBarAppearanceUpdate()
   }
+  
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .darkContent
   }

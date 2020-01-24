@@ -165,7 +165,7 @@ class LoginViewController: UIViewController {
         print("Error in login \(error?.localizedDescription)")
       } else {
         DispatchQueue.main.async {
-          let registration = self.storyboard?.instantiateViewController(withIdentifier: "NotesCatalogCollectionViewController") as! NotesCatalogCollectionViewController
+          let registration = self.storyboard?.instantiateViewController(withIdentifier: "ContainerViewController") as! ContainerViewController
           registration.modalPresentationStyle = .fullScreen
           self.present(registration, animated: true, completion: nil)
           print("Успешный вход")

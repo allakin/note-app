@@ -22,6 +22,8 @@
 		735905D223489C6F00BD58A4 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735905D123489C6F00BD58A4 /* RegistrationViewController.swift */; };
 		735905D42348F1E300BD58A4 /* ExtentionValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735905D32348F1E300BD58A4 /* ExtentionValid.swift */; };
 		7363EEF7239D30D900872FAE /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7363EEF6239D30D900872FAE /* DataProvider.swift */; };
+		736774FE23D634FC009DB11F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736774FD23D634FC009DB11F /* MenuViewController.swift */; };
+		7367750223D64572009DB11F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367750123D64572009DB11F /* ContainerViewController.swift */; };
 		737D19B62360D9E300563F05 /* CreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D19B52360D9E300563F05 /* CreateArticleViewController.swift */; };
 		738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */; };
 		738C567823984450008EA0C2 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C567723984450008EA0C2 /* ArticleModel.swift */; };
@@ -55,6 +57,8 @@
 		735905D123489C6F00BD58A4 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		735905D32348F1E300BD58A4 /* ExtentionValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionValid.swift; sourceTree = "<group>"; };
 		7363EEF6239D30D900872FAE /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		736774FD23D634FC009DB11F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7367750123D64572009DB11F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		737D19B52360D9E300563F05 /* CreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArticleViewController.swift; sourceTree = "<group>"; };
 		738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCatalogCollectionViewControllerDataSourse.swift; sourceTree = "<group>"; };
 		738C567723984450008EA0C2 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 				73CD11AF23CB8DB8003390EF /* CheckboxSetting.swift */,
 				73CD11B423CBB4AD003390EF /* ActivityIndicatory.swift */,
 				73CD11B623CCF6FF003390EF /* ResetPasswordViewController.swift */,
+				736774FD23D634FC009DB11F /* MenuViewController.swift */,
+				7367750123D64572009DB11F /* ContainerViewController.swift */,
 			);
 			path = notes;
 			sourceTree = "<group>";
@@ -273,12 +279,14 @@
 				73CD11B023CB8DB8003390EF /* CheckboxSetting.swift in Sources */,
 				737D19B62360D9E300563F05 /* CreateArticleViewController.swift in Sources */,
 				73CD11B723CCF6FF003390EF /* ResetPasswordViewController.swift in Sources */,
+				7367750223D64572009DB11F /* ContainerViewController.swift in Sources */,
 				7363EEF7239D30D900872FAE /* DataProvider.swift in Sources */,
 				731F9E11234FD024001D448C /* NotesCatalogCollectionViewCell.swift in Sources */,
 				733FD77823412E8A00A2DFAF /* LoginViewController.swift in Sources */,
 				731F9E0F234FCFF0001D448C /* NotesCatalogCollectionViewController.swift in Sources */,
 				738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */,
 				738C567823984450008EA0C2 /* ArticleModel.swift in Sources */,
+				736774FE23D634FC009DB11F /* MenuViewController.swift in Sources */,
 				733708A723492EA200985AB6 /* Color.swift in Sources */,
 				739F7C92236DD06500E07FF2 /* AccessInPhotoArticle.swift in Sources */,
 				735905D42348F1E300BD58A4 /* ExtentionValid.swift in Sources */,
