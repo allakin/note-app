@@ -34,8 +34,7 @@ class MenuViewController: UIViewController {
     button.setTitle("Заметки", for: .normal)
     button.titleLabel?.textAlignment = .center
     button.tintColor = .TextGrayColor
-    button.titleLabel?.text?.uppercased()
-    button.titleLabel?.font = UIFont(name: "Helvetica", size: 25)
+    button.titleLabel?.font = UIFont(name: "Helvetica", size: 22)
     button.addTarget(self, action: #selector(openNoteView), for: .touchUpInside)
     return button
   }()
@@ -48,8 +47,7 @@ class MenuViewController: UIViewController {
     button.setTitle("Поддержка", for: .normal)
     button.titleLabel?.textAlignment = .center
     button.tintColor = .TextGrayColor
-    button.titleLabel?.text?.uppercased()
-    button.titleLabel?.font = UIFont(name: "Helvetica", size: 25)
+    button.titleLabel?.font = UIFont(name: "Helvetica", size: 22)
     button.addTarget(self, action: #selector(supportView), for: .touchUpInside)
     return button
   }()
@@ -62,8 +60,7 @@ class MenuViewController: UIViewController {
     button.setTitle("Настройки", for: .normal)
     button.titleLabel?.textAlignment = .center
     button.tintColor = .TextGrayColor
-    button.titleLabel?.text?.uppercased()
-    button.titleLabel?.font = UIFont(name: "Helvetica", size: 25)
+    button.titleLabel?.font = UIFont(name: "Helvetica", size: 22)
     button.addTarget(self, action: #selector(settingView), for: .touchUpInside)
     return button
   }()
