@@ -28,7 +28,7 @@ extension NotesCatalogCollectionViewController {
     let info = userArticles[indexPath.item]
     
     cell.refresh(info: info)
-    print(userArticles)
+//    print(userArticles)
     return cell
   }
   

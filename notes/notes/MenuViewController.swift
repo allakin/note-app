@@ -10,11 +10,14 @@ import UIKit
 
 protocol MenuViewControllerDelegate {
   func closeMenu()
+  func openSettingView()
+  func openSupportView()
 }
 
 class MenuViewController: UIViewController {
   
   var delegate: MenuViewControllerDelegate?
+  var controller: UIViewController!
   
   let closeMenuButton: UIButton = {
     let button = UIButton()
@@ -108,6 +111,7 @@ class MenuViewController: UIViewController {
   }
   
   @objc func openNoteView() {
+    delegate?.closeMenu()
     activeButtonSupport.alpha = 0
     activeButtonSetting.alpha = 0
     activeButtonNote.alpha = 1
@@ -115,6 +119,8 @@ class MenuViewController: UIViewController {
   }
   
   @objc func supportView() {
+    delegate?.closeMenu()
+    delegate?.openSupportView()
     activeButtonNote.alpha = 0
     activeButtonSetting.alpha = 0
     activeButtonSupport.alpha = 1
@@ -122,10 +128,12 @@ class MenuViewController: UIViewController {
   }
   
   @objc func settingView() {
-     activeButtonNote.alpha = 0
-     activeButtonSetting.alpha = 1
-     activeButtonSupport.alpha = 0
-     print("Work")
+    delegate?.closeMenu()
+    delegate?.openSettingView()
+    activeButtonNote.alpha = 0
+    activeButtonSetting.alpha = 1
+    activeButtonSupport.alpha = 0
+    print("Work")
    }
   
   func uiSetting() {

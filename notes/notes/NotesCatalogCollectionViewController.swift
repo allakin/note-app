@@ -68,8 +68,8 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
           self.userArticles.append(infoItem)
           self.view.activityStopAnimating()
           self.collectionView.reloadData()
-          print(value)
-          print(self.userArticles)
+//          print(value)
+//          print(self.userArticles)
         }
         // ...
       }) { (error) in

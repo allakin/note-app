@@ -10,6 +10,14 @@ import UIKit
 
 class ContainerViewController: UIViewController, NotesCatalogCollectionViewControllerDelegate, MenuViewControllerDelegate {
   
+  func openSupportView() {
+    openSupportViewController()
+  }
+  
+  func openSettingView() {
+    openSettingViewController()
+  }
+  
   func closeMenu() {
     toggleMenu()
   }
@@ -50,9 +58,18 @@ class ContainerViewController: UIViewController, NotesCatalogCollectionViewContr
     }
   }
   
+  func openSettingViewController() {
+    let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
+    self.present(viewController, animated: true, completion: nil)
+  }
+  
+  func openSupportViewController() {
+    let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SupportViewController") as! SupportViewController
+    self.present(viewController, animated: true, completion: nil)
+  }
+  
   func showMenuViewController(shouldMove: Bool) {
     if shouldMove {
-      self.controller.view.layer.cornerRadius = 30
       self.controller.view.layer.shadowColor = UIColor(red:0.31, green:0.65, blue:0.49, alpha:1.00).cgColor
       self.controller.view.layer.shadowOpacity = 1
       self.controller.view.layer.shadowOffset = .init(width: -15, height: -15)

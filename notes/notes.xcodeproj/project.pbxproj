@@ -24,6 +24,8 @@
 		7363EEF7239D30D900872FAE /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7363EEF6239D30D900872FAE /* DataProvider.swift */; };
 		736774FE23D634FC009DB11F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736774FD23D634FC009DB11F /* MenuViewController.swift */; };
 		7367750223D64572009DB11F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367750123D64572009DB11F /* ContainerViewController.swift */; };
+		7367750823E0B763009DB11F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367750723E0B763009DB11F /* SettingViewController.swift */; };
+		7367750A23E0BBC9009DB11F /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367750923E0BBC9009DB11F /* SupportViewController.swift */; };
 		737D19B62360D9E300563F05 /* CreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D19B52360D9E300563F05 /* CreateArticleViewController.swift */; };
 		738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */; };
 		738C567823984450008EA0C2 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C567723984450008EA0C2 /* ArticleModel.swift */; };
@@ -59,6 +61,8 @@
 		7363EEF6239D30D900872FAE /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		736774FD23D634FC009DB11F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7367750123D64572009DB11F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		7367750723E0B763009DB11F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		7367750923E0BBC9009DB11F /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		737D19B52360D9E300563F05 /* CreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArticleViewController.swift; sourceTree = "<group>"; };
 		738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCatalogCollectionViewControllerDataSourse.swift; sourceTree = "<group>"; };
 		738C567723984450008EA0C2 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 				73CD11B623CCF6FF003390EF /* ResetPasswordViewController.swift */,
 				736774FD23D634FC009DB11F /* MenuViewController.swift */,
 				7367750123D64572009DB11F /* ContainerViewController.swift */,
+				7367750723E0B763009DB11F /* SettingViewController.swift */,
+				7367750923E0BBC9009DB11F /* SupportViewController.swift */,
 			);
 			path = notes;
 			sourceTree = "<group>";
@@ -283,7 +289,9 @@
 				7363EEF7239D30D900872FAE /* DataProvider.swift in Sources */,
 				731F9E11234FD024001D448C /* NotesCatalogCollectionViewCell.swift in Sources */,
 				733FD77823412E8A00A2DFAF /* LoginViewController.swift in Sources */,
+				7367750A23E0BBC9009DB11F /* SupportViewController.swift in Sources */,
 				731F9E0F234FCFF0001D448C /* NotesCatalogCollectionViewController.swift in Sources */,
+				7367750823E0B763009DB11F /* SettingViewController.swift in Sources */,
 				738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */,
 				738C567823984450008EA0C2 /* ArticleModel.swift in Sources */,
 				736774FE23D634FC009DB11F /* MenuViewController.swift in Sources */,
@@ -416,6 +424,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -427,7 +436,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
