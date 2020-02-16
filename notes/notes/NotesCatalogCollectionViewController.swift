@@ -13,7 +13,12 @@ protocol NotesCatalogCollectionViewControllerDelegate {
   func toggleMenu()
 }
 
-class NotesCatalogCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class NotesCatalogCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CreateArticleViewControllerDelagate {
+  
+  func deleteItemInArray(keyID: String, numPosition: Int) {
+    userArticles.remove(at: numPosition)
+    collectionView.reloadData()
+  }
   
   var userArticles = [Articles]()
   let reuseIdentifier = "Cell"
@@ -58,18 +63,15 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
   }
   
   func getData() {
-    view.activityStartAnimating(activityColor: UIColor.LightOrangeColor, alpha: 0)
+    self.view.activityStartAnimating(activityColor: UIColor.LightOrangeColor, alpha: 0)
     Reference().correctReference().child(FirebaseEntity.articles.rawValue)
       .child(Reference().returnUserID()).observeSingleEvent(of: .value, with: { (snapshot) in
-        
+        self.view.activityStopAnimating()
         guard let data = snapshot.value as? NSDictionary else {return}
         for value in data.allValues{
           let infoItem = Articles(dict: value as! NSDictionary)
           self.userArticles.append(infoItem)
-          self.view.activityStopAnimating()
           self.collectionView.reloadData()
-//          print(value)
-//          print(self.userArticles)
         }
         // ...
       }) { (error) in
@@ -104,12 +106,14 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "PresentArticle" {
       let detail = segue.destination as! CreateArticleViewController
+      detail.delegate = self
       if let indexPaths = collectionView.indexPathsForSelectedItems {
         let indexPath = indexPaths.first as? NSIndexPath
         detail.titleOFArticle = userArticles[indexPath!.item].title ?? "Нет данных!"
         detail.imageOFArticle = userArticles[indexPath!.item].coverImage ?? ""
         detail.descriptionOFArticle = userArticles[indexPath!.item].description ?? "Нет данных!"
         detail.keyID = userArticles[indexPath!.item].keyID ?? ""
+        detail.numberPositionArticleInList = indexPath?.row ?? 0
       }
     }
   }

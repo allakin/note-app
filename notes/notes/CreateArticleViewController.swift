@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+protocol CreateArticleViewControllerDelagate {
+  func deleteItemInArray(keyID: String, numPosition: Int)
+}
+
 class CreateArticleViewController: UIViewController {
   
   @IBOutlet weak var labelArticle: UITextView!
@@ -24,6 +28,8 @@ class CreateArticleViewController: UIViewController {
   var descriptionOFArticle: String = ""
   var keyID: String = ""
   var articleIsChanced = false
+  var delegate: CreateArticleViewControllerDelagate?
+  var numberPositionArticleInList = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -119,7 +125,8 @@ class CreateArticleViewController: UIViewController {
           print(error.localizedDescription)
         }
         self.dismiss(animated: true) {
-          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
+//          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
+          self.delegate?.deleteItemInArray(keyID: self.keyID, numPosition: self.numberPositionArticleInList)
         }
     }
   }
@@ -177,7 +184,7 @@ class CreateArticleViewController: UIViewController {
                       StoreKey.articleCoverImage.rawValue: url.absoluteString]
           let childUpdates = ["/\(FirebaseEntity.articles.rawValue)/\(Reference().returnUserID())/\(key)/": post]
           Reference().correctReference().updateChildValues(childUpdates)
-          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
+//          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
           print("Data Changed")
         })
       })
@@ -217,9 +224,11 @@ class CreateArticleViewController: UIViewController {
                       StoreKey.keyID.rawValue: keyID]
           Reference().correctReference().child(FirebaseEntity.articles.rawValue)
             .child(Reference().returnUserID()).child(keyID ?? "").setValue(data)
+  
           NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
           print("Data Saved!")
         })
+        
       })
     }
   }

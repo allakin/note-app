@@ -20,5 +20,4 @@ struct Articles {
     coverImage = dict.value(forKeyPath: "articleCoverImage") as? String
     keyID = dict.value(forKeyPath: "keyID") as? String
   }
-  
 }
