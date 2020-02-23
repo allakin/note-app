@@ -140,33 +140,16 @@ class RegistrationViewController: UIViewController {
     view.activityStartAnimating(activityColor: .LightOrangeColor, alpha: 0.6)
     //Validate the fields
     let error = validateFields()
-    if error != "" && emailValidState != false && passwordValidState != false{
+    if error != "" && emailValidState != false && passwordValidState != false {
       print("Error Text Filed")
     } else {
       guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
         let email = emailTextField.text, let password = passwordTextField.text else {return}
-
-//      firstName.trimmingCharacters(in: .whitespacesAndNewlines)
-//      lastName.trimmingCharacters(in: .whitespacesAndNewlines)
-//      email.trimmingCharacters(in: .whitespacesAndNewlines)
-//      password.trimmingCharacters(in: .whitespacesAndNewlines)
       
       Auth.auth().createUser(withEmail: email, password: password) { (results, err) in
         if err != nil {
           print("Error creating user")
         } else {
-//          //Create the user
-//          let db = Firestore.firestore()
-//          db.collection("users").addDocument(data: ["first_name" : firstName,
-//                                                    "last_name" : lastName,
-//                                                    "uid": results!.user.uid,
-//                                                    "notes": ["note_image_cover": "Привет!",
-//                                                             "note_title": "Как дела?",
-//                                                             "note_description": "ДА ДА"]]) { (error) in
-//            if error != nil {
-//              print("user data couldn't save")
-//            }
-//          }
           
           let keyID = Reference().returnUserID()
           let data = [StoreKey.personName.rawValue: firstName,
@@ -188,46 +171,8 @@ class RegistrationViewController: UIViewController {
 
     }
   }
+	
   @IBAction func cancelTapped(_ sender: Any) {
     dismiss(animated: true, completion: nil)
   }
 }
-
-
-//func saveDataInFireBase() {
-//  guard let title = labelArticle.text,
-//    let description = descriptionArticle.text, let image = articleImageCover.image else { return }
-//
-//  let storageReference = Storage.storage().reference()
-//  .child(FirebaseEntity.articlesCoverFolder.rawValue).child("\(image)")
-//
-//  if let profileImage = self.articleImageCover.image,
-//    let uploadData = profileImage.jpegData(compressionQuality: 0.1) {
-//
-//    storageReference.putData(uploadData, metadata: nil, completion: { (_, error) in
-//
-//      if let error = error {
-//        print(error)
-//        return
-//      }
-//
-//      storageReference.downloadURL(completion: { (url, err) in
-//        if let err = err {
-//          print(err)
-//          return
-//        }
-//
-//        guard let url = url else { return }
-//        let keyID = Reference().correctReference().childByAutoId().key
-//        let data = [StoreKey.labelArticle.rawValue: title,
-//                    StoreKey.descriptionArticle.rawValue: description,
-//                    StoreKey.articleCoverImage.rawValue: url.absoluteString,
-//                    StoreKey.keyID.rawValue: keyID]
-//        Reference().correctReference().child(FirebaseEntity.articles.rawValue)
-//          .child(Reference().returnUserID()).child(keyID ?? "").setValue(data)
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
-//        print("Data Saved!")
-//      })
-//    })
-//  }
-//}
