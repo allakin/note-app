@@ -44,6 +44,7 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
     view.overrideUserInterfaceStyle = .light
     getData()
     settingButton()
+		setMenuButton()
     NotificationCenter.default.addObserver(self, selector: #selector(loadList),
                                            name: NSNotification.Name(rawValue: "refreshData"), object: nil)
     self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -60,6 +61,29 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .darkContent
+  }
+	
+	func setMenuButton() {
+		let headerNavigationBar = UIView(frame: CGRect(x: 0, y: 50, width: view.frame.size.width, height: 50))
+    headerNavigationBar.backgroundColor = .clear
+    view.addSubview(headerNavigationBar)
+    
+    let buttonMenu = UIButton(frame: CGRect(x: 16, y: 50, width: 50, height: 50))
+    buttonMenu.setImage(#imageLiteral(resourceName: "menu"), for: .normal)
+    buttonMenu.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
+    view.addSubview(buttonMenu)
+    
+    let labelMenu = UILabel(frame: CGRect(x: 16 + 50, y: 50, width: view.frame.size.width, height: 50))
+    labelMenu.text = "Меню"
+    labelMenu.font = UIFont(name: "Helvetica", size: 16)
+    labelMenu.font = UIFont.boldSystemFont(ofSize: 16)
+    labelMenu.textColor = .darkText
+    labelMenu.textAlignment = .left
+    view.addSubview(labelMenu)
+	}
+  
+  @objc func menuButtonAction() {
+    delegate?.toggleMenu()
   }
   
   func getData() {

@@ -165,9 +165,9 @@ class LoginViewController: UIViewController {
         print("Error in login \(error?.localizedDescription)")
       } else {
         DispatchQueue.main.async {
-          let registration = self.storyboard?.instantiateViewController(withIdentifier: "ContainerViewController") as! ContainerViewController
-          registration.modalPresentationStyle = .fullScreen
-          self.present(registration, animated: true, completion: nil)
+          let login = self.storyboard?.instantiateViewController(withIdentifier: "ContainerViewController") as! ContainerViewController
+          login.modalPresentationStyle = .fullScreen
+          self.present(login, animated: true, completion: nil)
           print("Успешный вход")
           self.view.activityStopAnimating()
         }

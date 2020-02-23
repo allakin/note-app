@@ -160,7 +160,7 @@ class RegistrationViewController: UIViewController {
           //Transition to the home screen
           
           DispatchQueue.main.async {
-            let registration = self.storyboard?.instantiateViewController(withIdentifier: "NotesCatalogCollectionViewController") as! NotesCatalogCollectionViewController
+            let registration = self.storyboard?.instantiateViewController(withIdentifier: "ContainerViewController") as! ContainerViewController
             registration.modalPresentationStyle = .fullScreen
             self.present(registration, animated: true, completion: nil)
             self.view.activityStopAnimating()
