@@ -68,7 +68,7 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
       .child(Reference().returnUserID()).observeSingleEvent(of: .value, with: { (snapshot) in
         self.view.activityStopAnimating()
         guard let data = snapshot.value as? NSDictionary else {return}
-        for value in data.allValues{
+        for value in data.allValues {
           let infoItem = Articles(dict: value as! NSDictionary)
           self.userArticles.append(infoItem)
           self.collectionView.reloadData()

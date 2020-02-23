@@ -19,7 +19,7 @@ enum DeviceName: String{
 enum FirebaseEntity: String {
   case articles = "articles"
   case articlesCoverFolder = "ArticlesCoverFolder"
-  case personInfo = "PersonInformation"
+  case personInformation = "PersonInformation"
 }
 
 enum StoreKey: String {
@@ -29,6 +29,7 @@ enum StoreKey: String {
   case keyID = "keyID"
   case personName = "PersonName"
   case personSecondName = "PersonSecondName"
+  case userEmail = "UserEmail"
 }
 
 

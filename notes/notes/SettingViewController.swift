@@ -8,10 +8,12 @@
 
 import UIKit
 import FirebaseAuth
+import FittedSheets
 
 class SettingViewController: UIViewController {
   
   @IBOutlet weak var addUserPhoto: UIButton!
+  @IBOutlet weak var userAvatar: UIImageView!
   
   let userDefault = UserDefaults.standard
   
@@ -37,6 +39,18 @@ class SettingViewController: UIViewController {
     return button
   }()
   
+  let editUserSetting: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.backgroundColor = .MainGreenColor
+    button.setTitle("Изменить настройки", for: .normal)
+    button.tintColor = .white
+    button.titleLabel?.textAlignment = .center
+    button.layer.cornerRadius = 25
+    button.addTarget(self, action: #selector(editButtonAction), for: .touchUpInside)
+    return button
+  }()
+  
   let userEmailLabel: UILabel = {
     let label = UILabel()
     label.text = "admin@mail.ru"
@@ -51,8 +65,7 @@ class SettingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
-    userNameLabel.text = "\(returnUserDefaultString(string: "userName")) \(returnUserDefaultString(string: "lastName"))"
-    userEmailLabel.text = "\(returnUserDefaultString(string: "userEmail"))"
+    getData()
     addUserPhoto.layer.shadowColor = UIColor.LightOrangeColor.cgColor
     addUserPhoto.layer.shadowOpacity = 1
     addUserPhoto.layer.shadowOffset = .init(width: 0, height: 7)
@@ -60,23 +73,44 @@ class SettingViewController: UIViewController {
     uiSetting()
   }
   
+  //FIXME: Поправить редактирование профиля пользователя
+  @objc func editButtonAction() {
+    print("asd")
+    let controller = ResetPasswordViewController()
+    let sheetController = SheetViewController(controller: controller)
+    sheetController.handleColor = UIColor.white
+    sheetController.topCornersRadius = 25
+    sheetController.handleSize = CGSize(width: 50, height: 4)
+    sheetController.setSizes([.fixed(400)], animated: true)
+    // It is important to set animated to false or it behaves weird currently
+    self.present(sheetController, animated: false, completion: nil)
+  }
+  
+  func getData() {
+    Reference().correctReference().child(FirebaseEntity.personInformation.rawValue)
+      .child(Reference().returnUserID()).observeSingleEvent(of: .value, with: { (snapshot) in
+        guard let dictionary = snapshot.value as? NSDictionary else {return}
+        if let username = dictionary["PersonName"] as? String,
+          let userSecondName = dictionary["PersonSecondName"] as? String,
+          let userEmail = dictionary["UserEmail"] as? String {
+          self.userNameLabel.text = "\(username) \(userSecondName)"
+          self.userEmailLabel.text = "\(userEmail)"
+        }
+      }) { (error) in
+        print(error.localizedDescription)
+    }
+  }
+  
   @objc func logoutButtonAction() {
     do{
       try Auth.auth().signOut()
       self.userDefault.set(false, forKey: "stateCheckbox")
-      self.userDefault.removeObject(forKey: "userLogin")
-      self.userDefault.removeObject(forKey: "userPassword")
-      self.userDefault.removeObject(forKey: "userName")
-      self.userDefault.removeObject(forKey: "lastName")
-      self.userDefault.removeObject(forKey: "userEmail")
       let startScreen = self.storyboard?.instantiateViewController(withIdentifier: "StartScreenViewController") as! StartScreenViewController
       startScreen.modalPresentationStyle = .fullScreen
       self.present(startScreen, animated: true, completion: nil)
     } catch let logoutError {
       print(logoutError)
     }
-    
-    print("++++++++++++")
     print(userDefault.bool(forKey: "stateCheckbox"))
     
   }
@@ -85,10 +119,15 @@ class SettingViewController: UIViewController {
     return userDefault.string(forKey: string) ?? ""
   }
   
+  @IBAction func addUserPhotoButtonAction(_ sender: Any) {
+    showAlert()
+  }
+  
   func uiSetting() {
     view.addSubview(userNameLabel)
     view.addSubview(userEmailLabel)
     view.addSubview(logoutButton)
+    view.addSubview(editUserSetting)
     
     userNameLabel.topAnchor.constraint(equalTo: addUserPhoto.bottomAnchor, constant: 20).isActive = true
     userNameLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -99,6 +138,11 @@ class SettingViewController: UIViewController {
     userEmailLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     userEmailLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     userEmailLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
+    
+    editUserSetting.topAnchor.constraint(equalTo: userEmailLabel.bottomAnchor, constant: 20).isActive = true
+    editUserSetting.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
+    editUserSetting.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+    editUserSetting.heightAnchor.constraint(equalToConstant: 50).isActive = true
     
     logoutButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
     logoutButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
@@ -116,4 +160,40 @@ class SettingViewController: UIViewController {
    }
    */
   
+}
+
+
+extension SettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  //get a photo
+  func showAlert() {
+    let alert = UIAlertController(title: "Укажите место", message: "Где хранятся ваши фотографии", preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: {(action: UIAlertAction) in
+      self.getImage(fromSourceType: .camera)
+    }))
+    alert.addAction(UIAlertAction(title: "Альбом", style: .default, handler: {(action: UIAlertAction) in
+      self.getImage(fromSourceType: .photoLibrary)
+    }))
+    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+  //get image from source type
+  func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
+    //Check is source type available
+    if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+      let imagePickerController = UIImagePickerController()
+      imagePickerController.delegate = self
+      imagePickerController.sourceType = sourceType
+      self.present(imagePickerController, animated: true, completion: nil)
+    }
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController,
+                             didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    picker.dismiss(animated: true, completion: nil)
+    if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+      userAvatar.image = image
+    }
+  }
+  //<-end
 }

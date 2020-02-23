@@ -538,6 +538,9 @@
                                         <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addUserPhotoButtonAction:" destination="L79-3W-xVq" eventType="touchUpInside" id="9EI-Z2-lXk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -551,6 +554,7 @@
                     </view>
                     <connections>
                         <outlet property="addUserPhoto" destination="ysy-JW-GdZ" id="m7b-kc-PPH"/>
+                        <outlet property="userAvatar" destination="1Xk-8J-vkc" id="zzi-pM-hhv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ozv-qW-Jxn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

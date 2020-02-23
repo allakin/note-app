@@ -170,8 +170,9 @@ class RegistrationViewController: UIViewController {
           
           let keyID = Reference().returnUserID()
           let data = [StoreKey.personName.rawValue: firstName,
-                      StoreKey.personSecondName.rawValue: lastName] as [String : Any]
-          Reference().correctReference().child(FirebaseEntity.personInfo.rawValue).child(keyID ?? "").setValue(data)
+                      StoreKey.personSecondName.rawValue: lastName,
+                      StoreKey.userEmail.rawValue: email] as [String : Any]
+          Reference().correctReference().child(FirebaseEntity.personInformation.rawValue).child(keyID ?? "").setValue(data)
           
           //Transition to the home screen
           
@@ -179,9 +180,6 @@ class RegistrationViewController: UIViewController {
             let registration = self.storyboard?.instantiateViewController(withIdentifier: "NotesCatalogCollectionViewController") as! NotesCatalogCollectionViewController
             registration.modalPresentationStyle = .fullScreen
             self.present(registration, animated: true, completion: nil)
-            self.userDefault.set(firstName, forKey: "userName")
-            self.userDefault.set(lastName, forKey: "lastName")
-            self.userDefault.set(email, forKey: "userEmail")
             self.view.activityStopAnimating()
             print("User was create successfully")
           }

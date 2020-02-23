@@ -28,7 +28,7 @@
 		7367750A23E0BBC9009DB11F /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367750923E0BBC9009DB11F /* SupportViewController.swift */; };
 		737D19B62360D9E300563F05 /* CreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D19B52360D9E300563F05 /* CreateArticleViewController.swift */; };
 		738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */; };
-		738C567823984450008EA0C2 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C567723984450008EA0C2 /* ArticleModel.swift */; };
+		738C567823984450008EA0C2 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C567723984450008EA0C2 /* BaseModel.swift */; };
 		739F7C90236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */; };
 		739F7C92236DD06500E07FF2 /* AccessInPhotoArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */; };
 		73CBA462238A982000F5B4E1 /* ReferenceOnFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */; };
@@ -65,7 +65,7 @@
 		7367750923E0BBC9009DB11F /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		737D19B52360D9E300563F05 /* CreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArticleViewController.swift; sourceTree = "<group>"; };
 		738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCatalogCollectionViewControllerDataSourse.swift; sourceTree = "<group>"; };
-		738C567723984450008EA0C2 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		738C567723984450008EA0C2 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpretionCreateArticleViewController.swift; sourceTree = "<group>"; };
 		739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessInPhotoArticle.swift; sourceTree = "<group>"; };
 		73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceOnFirebase.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 				739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */,
 				73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */,
 				738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */,
-				738C567723984450008EA0C2 /* ArticleModel.swift */,
+				738C567723984450008EA0C2 /* BaseModel.swift */,
 				7363EEF6239D30D900872FAE /* DataProvider.swift */,
 				73CD11AF23CB8DB8003390EF /* CheckboxSetting.swift */,
 				73CD11B423CBB4AD003390EF /* ActivityIndicatory.swift */,
@@ -293,7 +293,7 @@
 				731F9E0F234FCFF0001D448C /* NotesCatalogCollectionViewController.swift in Sources */,
 				7367750823E0B763009DB11F /* SettingViewController.swift in Sources */,
 				738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */,
-				738C567823984450008EA0C2 /* ArticleModel.swift in Sources */,
+				738C567823984450008EA0C2 /* BaseModel.swift in Sources */,
 				736774FE23D634FC009DB11F /* MenuViewController.swift in Sources */,
 				733708A723492EA200985AB6 /* Color.swift in Sources */,
 				739F7C92236DD06500E07FF2 /* AccessInPhotoArticle.swift in Sources */,
