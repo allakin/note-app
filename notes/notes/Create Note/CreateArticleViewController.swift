@@ -119,7 +119,7 @@ class CreateArticleViewController: UIViewController {
   
   @IBAction func deleteArticleButtonAction(_ sender: Any) {
     Reference().correctReference()
-      .child(FirebaseEntity.articles.rawValue)
+      .child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articles))
       .child(Reference().returnUserID()).child(keyID).removeValue { (error, _) in
         if let error = error {
           print(error.localizedDescription)
@@ -155,7 +155,8 @@ class CreateArticleViewController: UIViewController {
       let image = articleImageCover.image else { return }
     
     let storageReference = Storage.storage().reference()
-      .child(FirebaseEntity.articlesCoverFolder.rawValue).child("\(image)")
+      .child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articlesCoverFolder))
+			.child("\(image)")
     
     if let profileImage = self.articleImageCover.image,
       let uploadData = profileImage.jpegData(compressionQuality: 0.1) {
@@ -175,14 +176,15 @@ class CreateArticleViewController: UIViewController {
           
           guard let url = url else { return }
           guard let key = Reference().correctReference()
-            .child(FirebaseEntity.articles.rawValue)
+            .child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articles))
             .child(Reference().returnUserID())
             .child(self.keyID).key else { return }
           let post = [StoreKey.labelArticle.rawValue: title,
                       StoreKey.descriptionArticle.rawValue: description,
                       StoreKey.keyID.rawValue: self.keyID,
                       StoreKey.articleCoverImage.rawValue: url.absoluteString]
-          let childUpdates = ["/\(FirebaseEntity.articles.rawValue)/\(Reference().returnUserID())/\(key)/": post]
+          let childUpdates = ["/\(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articles))/\(Reference().returnUserID())/\(key)/": post]
+					
           Reference().correctReference().updateChildValues(childUpdates)
 //          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
           print("Data Changed")
@@ -198,8 +200,8 @@ class CreateArticleViewController: UIViewController {
       let description = descriptionArticle.text, let image = articleImageCover.image else { return }
 
     let storageReference = Storage.storage().reference()
-    .child(FirebaseEntity.articlesCoverFolder.rawValue).child("\(image)")
-    
+    .child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articlesCoverFolder)).child("\(image)")
+		
     if let profileImage = self.articleImageCover.image,
       let uploadData = profileImage.jpegData(compressionQuality: 0.1) {
       
@@ -222,7 +224,7 @@ class CreateArticleViewController: UIViewController {
                       StoreKey.descriptionArticle.rawValue: description,
                       StoreKey.articleCoverImage.rawValue: url.absoluteString,
                       StoreKey.keyID.rawValue: keyID]
-          Reference().correctReference().child(FirebaseEntity.articles.rawValue)
+          Reference().correctReference().child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articles))
             .child(Reference().returnUserID()).child(keyID ?? "").setValue(data)
   
           NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)

@@ -65,7 +65,11 @@ class SettingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+		addUserPhoto.tintColor = .MainGreenColor
     getData()
+		if userDefault.data(forKey: StoreKeyList().getKeyFromStore(key: .saveUserAvatarInUserDefaults)) != nil {
+			userAvatar.image = UIImage(data: userDefault.data(forKey: StoreKeyList().getKeyFromStore(key: .saveUserAvatarInUserDefaults))!)
+		}
     addUserPhoto.layer.shadowColor = UIColor.LightOrangeColor.cgColor
     addUserPhoto.layer.shadowOpacity = 1
     addUserPhoto.layer.shadowOffset = .init(width: 0, height: 7)
@@ -76,7 +80,7 @@ class SettingViewController: UIViewController {
   //FIXME: Поправить редактирование профиля пользователя
   @objc func editButtonAction() {
     print("asd")
-    let controller = ResetPasswordViewController()
+    let controller = EditUserSettingViewController()
     let sheetController = SheetViewController(controller: controller)
     sheetController.handleColor = UIColor.white
     sheetController.topCornersRadius = 25
@@ -87,7 +91,7 @@ class SettingViewController: UIViewController {
   }
   
   func getData() {
-    Reference().correctReference().child(FirebaseEntity.personInformation.rawValue)
+    Reference().correctReference().child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .personInformation))
       .child(Reference().returnUserID()).observeSingleEvent(of: .value, with: { (snapshot) in
         guard let dictionary = snapshot.value as? NSDictionary else {return}
         if let username = dictionary["PersonName"] as? String,
@@ -192,8 +196,15 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
                              didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     picker.dismiss(animated: true, completion: nil)
     if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-      userAvatar.image = image
+//      userAvatar.image = image
+			guard let uploadData = image.jpegData(compressionQuality: 0.1) else {return}
+			saveUserAvatarInUserDefaults(userAvatar: uploadData)
+			userAvatar.image = UIImage(data: userDefault.data(forKey: StoreKeyList().getKeyFromStore(key: .saveUserAvatarInUserDefaults))!)
     }
   }
   //<-end
+	
+	func saveUserAvatarInUserDefaults(userAvatar: Data) {
+		userDefault.setValue(userAvatar, forKey: StoreKeyList().getKeyFromStore(key: .saveUserAvatarInUserDefaults))
+	}
 }

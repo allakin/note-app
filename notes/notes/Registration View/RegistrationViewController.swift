@@ -155,7 +155,7 @@ class RegistrationViewController: UIViewController {
           let data = [StoreKey.personName.rawValue: firstName,
                       StoreKey.personSecondName.rawValue: lastName,
                       StoreKey.userEmail.rawValue: email] as [String : Any]
-          Reference().correctReference().child(FirebaseEntity.personInformation.rawValue).child(keyID ?? "").setValue(data)
+          Reference().correctReference().child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .personInformation)).child(keyID ?? "").setValue(data)
           
           //Transition to the home screen
           

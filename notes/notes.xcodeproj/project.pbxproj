@@ -29,6 +29,7 @@
 		737D19B62360D9E300563F05 /* CreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D19B52360D9E300563F05 /* CreateArticleViewController.swift */; };
 		738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */; };
 		738C567823984450008EA0C2 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C567723984450008EA0C2 /* BaseModel.swift */; };
+		7393E37E2402F90000733CA9 /* EditUserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393E37D2402F90000733CA9 /* EditUserSettingViewController.swift */; };
 		739F7C90236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */; };
 		739F7C92236DD06500E07FF2 /* AccessInPhotoArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */; };
 		73CBA462238A982000F5B4E1 /* ReferenceOnFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */; };
@@ -66,6 +67,7 @@
 		737D19B52360D9E300563F05 /* CreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArticleViewController.swift; sourceTree = "<group>"; };
 		738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCatalogCollectionViewControllerDataSourse.swift; sourceTree = "<group>"; };
 		738C567723984450008EA0C2 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		7393E37D2402F90000733CA9 /* EditUserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditUserSettingViewController.swift; path = "User Edit Setting/EditUserSettingViewController.swift"; sourceTree = "<group>"; };
 		739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpretionCreateArticleViewController.swift; sourceTree = "<group>"; };
 		739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessInPhotoArticle.swift; sourceTree = "<group>"; };
 		73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceOnFirebase.swift; sourceTree = "<group>"; };
@@ -92,9 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				7321317F234032680069B4C8 /* notes */,
-				73A3340F2402E90B003A9E23 /* Setting View */,
-				73A3340E2402E8FE003A9E23 /* Menu */,
-				73A334102402E91C003A9E23 /* Support View */,
 				7321317E234032680069B4C8 /* Products */,
 				9E401BFD25E4889B9ED5623D /* Pods */,
 				D9F71F27EDCC3D444892184E /* Frameworks */,
@@ -121,8 +120,20 @@
 				73A3340B2402E823003A9E23 /* Create Note */,
 				73A3340C2402E870003A9E23 /* Data Model */,
 				73A3340D2402E8E6003A9E23 /* Reset Password */,
+				73A3340F2402E90B003A9E23 /* Setting View */,
+				73A3340E2402E8FE003A9E23 /* Menu */,
+				73A334102402E91C003A9E23 /* Support View */,
+				7393E37C2402F78C00733CA9 /* User Edit Setting */,
+				7393E37D2402F90000733CA9 /* EditUserSettingViewController.swift */,
 			);
 			path = notes;
+			sourceTree = "<group>";
+		};
+		7393E37C2402F78C00733CA9 /* User Edit Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "User Edit Setting";
 			sourceTree = "<group>";
 		};
 		73A334062402E6CD003A9E23 /* Helpers */ = {
@@ -368,6 +379,7 @@
 				73213181234032680069B4C8 /* AppDelegate.swift in Sources */,
 				73CD11B523CBB4AD003390EF /* ActivityIndicatory.swift in Sources */,
 				73213183234032680069B4C8 /* SceneDelegate.swift in Sources */,
+				7393E37E2402F90000733CA9 /* EditUserSettingViewController.swift in Sources */,
 				73F1CFAE2352A801001900DC /* HelperNames.swift in Sources */,
 				7321318B234032680069B4C8 /* notes.xcdatamodeld in Sources */,
 				73CD11B023CB8DB8003390EF /* CheckboxSetting.swift in Sources */,

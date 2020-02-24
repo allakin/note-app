@@ -88,7 +88,7 @@ class NotesCatalogCollectionViewController: UICollectionViewController, UICollec
   
   func getData() {
     self.view.activityStartAnimating(activityColor: UIColor.LightOrangeColor, alpha: 0)
-    Reference().correctReference().child(FirebaseEntity.articles.rawValue)
+    Reference().correctReference().child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articles))
       .child(Reference().returnUserID()).observeSingleEvent(of: .value, with: { (snapshot) in
         self.view.activityStopAnimating()
         guard let data = snapshot.value as? NSDictionary else {return}
