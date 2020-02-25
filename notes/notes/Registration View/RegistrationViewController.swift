@@ -152,9 +152,9 @@ class RegistrationViewController: UIViewController {
         } else {
           
           let keyID = Reference().returnUserID()
-          let data = [StoreKey.personName.rawValue: firstName,
-                      StoreKey.personSecondName.rawValue: lastName,
-                      StoreKey.userEmail.rawValue: email] as [String : Any]
+          let data = [StoreKeyList().getKeyFromStore(key: .personName): firstName,
+                      StoreKeyList().getKeyFromStore(key: .personSecondName): lastName,
+                      StoreKeyList().getKeyFromStore(key: .userEmail): email] as [String : Any]
           Reference().correctReference().child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .personInformation)).child(keyID ?? "").setValue(data)
           
           //Transition to the home screen

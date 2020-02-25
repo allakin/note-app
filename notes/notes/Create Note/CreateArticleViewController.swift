@@ -179,10 +179,10 @@ class CreateArticleViewController: UIViewController {
             .child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articles))
             .child(Reference().returnUserID())
             .child(self.keyID).key else { return }
-          let post = [StoreKey.labelArticle.rawValue: title,
-                      StoreKey.descriptionArticle.rawValue: description,
-                      StoreKey.keyID.rawValue: self.keyID,
-                      StoreKey.articleCoverImage.rawValue: url.absoluteString]
+          let post = [StoreKeyList().getKeyFromStore(key: .labelArticle): title,
+                      StoreKeyList().getKeyFromStore(key: .descriptionArticle): description,
+                      StoreKeyList().getKeyFromStore(key: .keyID): self.keyID,
+                      StoreKeyList().getKeyFromStore(key: .articleCoverImage): url.absoluteString]
           let childUpdates = ["/\(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articles))/\(Reference().returnUserID())/\(key)/": post]
 					
           Reference().correctReference().updateChildValues(childUpdates)
@@ -220,10 +220,11 @@ class CreateArticleViewController: UIViewController {
           
           guard let url = url else { return }
           let keyID = Reference().correctReference().childByAutoId().key
-          let data = [StoreKey.labelArticle.rawValue: title,
-                      StoreKey.descriptionArticle.rawValue: description,
-                      StoreKey.articleCoverImage.rawValue: url.absoluteString,
-                      StoreKey.keyID.rawValue: keyID]
+          
+          let data = [StoreKeyList().getKeyFromStore(key: .labelArticle): title,
+                      StoreKeyList().getKeyFromStore(key: .descriptionArticle): description,
+                      StoreKeyList().getKeyFromStore(key: .articleCoverImage): url.absoluteString,
+                      StoreKeyList().getKeyFromStore(key: .keyID): keyID]
           Reference().correctReference().child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articles))
             .child(Reference().returnUserID()).child(keyID ?? "").setValue(data)
   

@@ -17,21 +17,21 @@ enum DeviceName: String{
   case iPhone8 = "iPhone 8"
 }
 
-enum FirebaseEntity: String {
-  case articles = "articles"
-  case articlesCoverFolder = "ArticlesCoverFolder"
-  case personInformation = "PersonInformation"
+enum FirebaseEntity {
+  case articles
+  case articlesCoverFolder
+  case personInformation
 }
 
-enum StoreKey: String {
-	case labelArticle = "labelArticle"
-	case descriptionArticle = "descriptionArticle"
-	case articleCoverImage = "articleCoverImage"
-	case keyID = "keyID"
-	case personName = "PersonName"
-	case personSecondName = "PersonSecondName"
-	case userEmail = "UserEmail"
-	case saveUserAvatarInUserDefaults = "UserAvatarImage"
+enum StoreKey {
+	case labelArticle
+	case descriptionArticle
+	case articleCoverImage
+	case keyID
+	case personName
+	case personSecondName
+	case userEmail
+	case saveUserAvatarInUserDefaults
 }
 
 class StoreKeyList {
@@ -54,7 +54,7 @@ class StoreKeyList {
 		case .saveUserAvatarInUserDefaults:
 			return "UserAvatarImage"
     default:
-      return ""
+      break
     }
   }
 }
@@ -69,7 +69,7 @@ class StoreKeysFirebaseEntity {
 		case .personInformation:
 			return "PersonInformation"
 		default:
-			return ""
+			break
 		}
 	}
 }

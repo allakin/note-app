@@ -67,7 +67,7 @@
 		737D19B52360D9E300563F05 /* CreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArticleViewController.swift; sourceTree = "<group>"; };
 		738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCatalogCollectionViewControllerDataSourse.swift; sourceTree = "<group>"; };
 		738C567723984450008EA0C2 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
-		7393E37D2402F90000733CA9 /* EditUserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditUserSettingViewController.swift; path = "User Edit Setting/EditUserSettingViewController.swift"; sourceTree = "<group>"; };
+		7393E37D2402F90000733CA9 /* EditUserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserSettingViewController.swift; sourceTree = "<group>"; };
 		739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpretionCreateArticleViewController.swift; sourceTree = "<group>"; };
 		739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessInPhotoArticle.swift; sourceTree = "<group>"; };
 		73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceOnFirebase.swift; sourceTree = "<group>"; };
@@ -124,7 +124,6 @@
 				73A3340E2402E8FE003A9E23 /* Menu */,
 				73A334102402E91C003A9E23 /* Support View */,
 				7393E37C2402F78C00733CA9 /* User Edit Setting */,
-				7393E37D2402F90000733CA9 /* EditUserSettingViewController.swift */,
 			);
 			path = notes;
 			sourceTree = "<group>";
@@ -132,6 +131,7 @@
 		7393E37C2402F78C00733CA9 /* User Edit Setting */ = {
 			isa = PBXGroup;
 			children = (
+				7393E37D2402F90000733CA9 /* EditUserSettingViewController.swift */,
 			);
 			path = "User Edit Setting";
 			sourceTree = "<group>";
