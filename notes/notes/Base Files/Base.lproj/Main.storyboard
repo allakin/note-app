@@ -552,6 +552,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZUJ-pR-Vgo"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ZK5-lP-gfT"/>
                     <connections>
                         <outlet property="addUserPhoto" destination="ysy-JW-GdZ" id="m7b-kc-PPH"/>
                         <outlet property="userAvatar" destination="1Xk-8J-vkc" id="zzi-pM-hhv"/>
@@ -619,10 +620,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3Al-Nr-f36"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7XJ-Xz-GJ9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jgx-aA-tgu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1254" y="797"/>
+            <point key="canvasLocation" x="2466" y="1605"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="in4-Hr-dWD">

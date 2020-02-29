@@ -21,3 +21,12 @@ struct Articles {
     keyID = dict.value(forKeyPath: "keyID") as? String
   }
 }
+
+struct ChangeUserSetting {
+  var userEmail: String?
+  var userPassword: String?
+  init(email: String, password: String) {
+    self.userEmail = email
+    self.userPassword = password
+  }
+}

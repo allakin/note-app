@@ -16,6 +16,7 @@ class SettingViewController: UIViewController {
   @IBOutlet weak var userAvatar: UIImageView!
   
   let userDefault = UserDefaults.standard
+  var userSetting = [ChangeUserSetting]()
   
   let userNameLabel: UILabel = {
     let label = UILabel()
@@ -79,8 +80,9 @@ class SettingViewController: UIViewController {
   
   //FIXME: Поправить редактирование профиля пользователя
   @objc func editButtonAction() {
-    print("asd")
     let controller = EditUserSettingViewController()
+    controller.emailTextField.text = userSetting.first?.userEmail
+    controller.passwordTextField.text = userSetting.first?.userPassword
     let sheetController = SheetViewController(controller: controller)
     sheetController.handleColor = UIColor.white
     sheetController.topCornersRadius = 25
@@ -99,6 +101,8 @@ class SettingViewController: UIViewController {
           let userEmail = dictionary["UserEmail"] as? String {
           self.userNameLabel.text = "\(username) \(userSecondName)"
           self.userEmailLabel.text = "\(userEmail)"
+          let test = ChangeUserSetting(email: userEmail, password: username)
+          self.userSetting.append(test)
         }
       }) { (error) in
         print(error.localizedDescription)
