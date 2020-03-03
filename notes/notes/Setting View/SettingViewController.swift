@@ -71,6 +71,8 @@ class SettingViewController: UIViewController {
 		if userDefault.data(forKey: StoreKeyList().getKeyFromStore(key: .saveUserAvatarInUserDefaults)) != nil {
 			userAvatar.image = UIImage(data: userDefault.data(forKey: StoreKeyList().getKeyFromStore(key: .saveUserAvatarInUserDefaults))!)
 		}
+		NotificationCenter.default.addObserver(self, selector: #selector(refreshUserInformation),
+																					 name: NSNotification.Name(rawValue: "refreshUserInformation"), object: nil)
     addUserPhoto.layer.shadowColor = UIColor.LightOrangeColor.cgColor
     addUserPhoto.layer.shadowOpacity = 1
     addUserPhoto.layer.shadowOffset = .init(width: 0, height: 7)
@@ -82,16 +84,22 @@ class SettingViewController: UIViewController {
   @objc func editButtonAction() {
     let controller = EditUserSettingViewController()
     controller.emailTextField.text = userSetting.first?.userEmail
-    controller.passwordTextField.text = userSetting.first?.userPassword
+		controller.nameTextField.text = userSetting.first?.userName
+		controller.secondNameTextField.text = userSetting.first?.userSecondName
     let sheetController = SheetViewController(controller: controller)
     sheetController.handleColor = UIColor.white
     sheetController.topCornersRadius = 25
     sheetController.handleSize = CGSize(width: 50, height: 4)
-    sheetController.setSizes([.fixed(400)], animated: true)
+    sheetController.setSizes([.fixed(480)], animated: true)
     // It is important to set animated to false or it behaves weird currently
     self.present(sheetController, animated: false, completion: nil)
   }
   
+	@objc func refreshUserInformation() {
+		userSetting.removeAll()
+		getData()
+	}
+	
   func getData() {
     Reference().correctReference().child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .personInformation))
       .child(Reference().returnUserID()).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -101,8 +109,8 @@ class SettingViewController: UIViewController {
           let userEmail = dictionary["UserEmail"] as? String {
           self.userNameLabel.text = "\(username) \(userSecondName)"
           self.userEmailLabel.text = "\(userEmail)"
-          let test = ChangeUserSetting(email: userEmail, password: username)
-          self.userSetting.append(test)
+					let createUserInformation = ChangeUserSetting(email: userEmail, name: username, secondName: userSecondName)
+          self.userSetting.append(createUserInformation)
         }
       }) { (error) in
         print(error.localizedDescription)

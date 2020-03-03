@@ -24,9 +24,11 @@ struct Articles {
 
 struct ChangeUserSetting {
   var userEmail: String?
-  var userPassword: String?
-  init(email: String, password: String) {
+	var userName: String?
+	var userSecondName: String?
+	init(email: String, name: String, secondName: String) {
     self.userEmail = email
-    self.userPassword = password
+		self.userName = name
+		self.userSecondName = secondName
   }
 }
