@@ -22,9 +22,14 @@
 		735905D223489C6F00BD58A4 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735905D123489C6F00BD58A4 /* RegistrationViewController.swift */; };
 		735905D42348F1E300BD58A4 /* ExtentionValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735905D32348F1E300BD58A4 /* ExtentionValid.swift */; };
 		7363EEF7239D30D900872FAE /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7363EEF6239D30D900872FAE /* DataProvider.swift */; };
+		736774FE23D634FC009DB11F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736774FD23D634FC009DB11F /* MenuViewController.swift */; };
+		7367750223D64572009DB11F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367750123D64572009DB11F /* ContainerViewController.swift */; };
+		7367750823E0B763009DB11F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367750723E0B763009DB11F /* SettingViewController.swift */; };
+		7367750A23E0BBC9009DB11F /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367750923E0BBC9009DB11F /* SupportViewController.swift */; };
 		737D19B62360D9E300563F05 /* CreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D19B52360D9E300563F05 /* CreateArticleViewController.swift */; };
 		738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */; };
-		738C567823984450008EA0C2 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C567723984450008EA0C2 /* ArticleModel.swift */; };
+		738C567823984450008EA0C2 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C567723984450008EA0C2 /* BaseModel.swift */; };
+		7393E37E2402F90000733CA9 /* EditUserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393E37D2402F90000733CA9 /* EditUserSettingViewController.swift */; };
 		739F7C90236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */; };
 		739F7C92236DD06500E07FF2 /* AccessInPhotoArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */; };
 		73CBA462238A982000F5B4E1 /* ReferenceOnFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */; };
@@ -55,9 +60,14 @@
 		735905D123489C6F00BD58A4 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		735905D32348F1E300BD58A4 /* ExtentionValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionValid.swift; sourceTree = "<group>"; };
 		7363EEF6239D30D900872FAE /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		736774FD23D634FC009DB11F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7367750123D64572009DB11F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		7367750723E0B763009DB11F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		7367750923E0BBC9009DB11F /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		737D19B52360D9E300563F05 /* CreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArticleViewController.swift; sourceTree = "<group>"; };
 		738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCatalogCollectionViewControllerDataSourse.swift; sourceTree = "<group>"; };
-		738C567723984450008EA0C2 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		738C567723984450008EA0C2 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		7393E37D2402F90000733CA9 /* EditUserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserSettingViewController.swift; sourceTree = "<group>"; };
 		739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpretionCreateArticleViewController.swift; sourceTree = "<group>"; };
 		739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessInPhotoArticle.swift; sourceTree = "<group>"; };
 		73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceOnFirebase.swift; sourceTree = "<group>"; };
@@ -83,8 +93,6 @@
 		73213174234032680069B4C8 = {
 			isa = PBXGroup;
 			children = (
-				733FD77723412E8A00A2DFAF /* LoginViewController.swift */,
-				733FD77523412CF600A2DFAF /* StartScreenViewController.swift */,
 				7321317F234032680069B4C8 /* notes */,
 				7321317E234032680069B4C8 /* Products */,
 				9E401BFD25E4889B9ED5623D /* Pods */,
@@ -103,32 +111,135 @@
 		7321317F234032680069B4C8 /* notes */ = {
 			isa = PBXGroup;
 			children = (
-				73213180234032680069B4C8 /* AppDelegate.swift */,
+				73213191234032690069B4C8 /* Info.plist */,
+				73A334092402E75F003A9E23 /* Base Files */,
+				73A334072402E70E003A9E23 /* Login View */,
+				73A334082402E73E003A9E23 /* Registration View */,
+				73A334062402E6CD003A9E23 /* Helpers */,
+				73A3340A2402E7FA003A9E23 /* Note List View */,
+				73A3340B2402E823003A9E23 /* Create Note */,
+				73A3340C2402E870003A9E23 /* Data Model */,
+				73A3340D2402E8E6003A9E23 /* Reset Password */,
+				73A3340F2402E90B003A9E23 /* Setting View */,
+				73A3340E2402E8FE003A9E23 /* Menu */,
+				73A334102402E91C003A9E23 /* Support View */,
+				7393E37C2402F78C00733CA9 /* User Edit Setting */,
+			);
+			path = notes;
+			sourceTree = "<group>";
+		};
+		7393E37C2402F78C00733CA9 /* User Edit Setting */ = {
+			isa = PBXGroup;
+			children = (
+				7393E37D2402F90000733CA9 /* EditUserSettingViewController.swift */,
+			);
+			path = "User Edit Setting";
+			sourceTree = "<group>";
+		};
+		73A334062402E6CD003A9E23 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				73CD11B423CBB4AD003390EF /* ActivityIndicatory.swift */,
+				7363EEF6239D30D900872FAE /* DataProvider.swift */,
+				735905D32348F1E300BD58A4 /* ExtentionValid.swift */,
+				73F1CFAD2352A801001900DC /* HelperNames.swift */,
+				733708A623492EA200985AB6 /* Color.swift */,
+				73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		73A334072402E70E003A9E23 /* Login View */ = {
+			isa = PBXGroup;
+			children = (
+				73CD11AF23CB8DB8003390EF /* CheckboxSetting.swift */,
+				733FD77723412E8A00A2DFAF /* LoginViewController.swift */,
+				733FD77523412CF600A2DFAF /* StartScreenViewController.swift */,
+			);
+			path = "Login View";
+			sourceTree = "<group>";
+		};
+		73A334082402E73E003A9E23 /* Registration View */ = {
+			isa = PBXGroup;
+			children = (
+				735905D123489C6F00BD58A4 /* RegistrationViewController.swift */,
+			);
+			path = "Registration View";
+			sourceTree = "<group>";
+		};
+		73A334092402E75F003A9E23 /* Base Files */ = {
+			isa = PBXGroup;
+			children = (
 				73213182234032680069B4C8 /* SceneDelegate.swift */,
+				73213180234032680069B4C8 /* AppDelegate.swift */,
 				73213186234032680069B4C8 /* Main.storyboard */,
 				7321318C234032690069B4C8 /* Assets.xcassets */,
 				7321318E234032690069B4C8 /* LaunchScreen.storyboard */,
-				73213191234032690069B4C8 /* Info.plist */,
 				73213189234032680069B4C8 /* notes.xcdatamodeld */,
 				73213197234032EE0069B4C8 /* GoogleService-Info.plist */,
-				735905D123489C6F00BD58A4 /* RegistrationViewController.swift */,
-				735905D32348F1E300BD58A4 /* ExtentionValid.swift */,
-				733708A623492EA200985AB6 /* Color.swift */,
+			);
+			path = "Base Files";
+			sourceTree = "<group>";
+		};
+		73A3340A2402E7FA003A9E23 /* Note List View */ = {
+			isa = PBXGroup;
+			children = (
+				7367750123D64572009DB11F /* ContainerViewController.swift */,
 				731F9E0E234FCFF0001D448C /* NotesCatalogCollectionViewController.swift */,
 				731F9E10234FD024001D448C /* NotesCatalogCollectionViewCell.swift */,
-				73F1CFAD2352A801001900DC /* HelperNames.swift */,
+				738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */,
+			);
+			path = "Note List View";
+			sourceTree = "<group>";
+		};
+		73A3340B2402E823003A9E23 /* Create Note */ = {
+			isa = PBXGroup;
+			children = (
 				737D19B52360D9E300563F05 /* CreateArticleViewController.swift */,
 				739F7C8F236DC50800E07FF2 /* ExpretionCreateArticleViewController.swift */,
 				739F7C91236DD06500E07FF2 /* AccessInPhotoArticle.swift */,
-				73CBA461238A982000F5B4E1 /* ReferenceOnFirebase.swift */,
-				738C5673239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift */,
-				738C567723984450008EA0C2 /* ArticleModel.swift */,
-				7363EEF6239D30D900872FAE /* DataProvider.swift */,
-				73CD11AF23CB8DB8003390EF /* CheckboxSetting.swift */,
-				73CD11B423CBB4AD003390EF /* ActivityIndicatory.swift */,
+			);
+			path = "Create Note";
+			sourceTree = "<group>";
+		};
+		73A3340C2402E870003A9E23 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				738C567723984450008EA0C2 /* BaseModel.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		73A3340D2402E8E6003A9E23 /* Reset Password */ = {
+			isa = PBXGroup;
+			children = (
 				73CD11B623CCF6FF003390EF /* ResetPasswordViewController.swift */,
 			);
-			path = notes;
+			path = "Reset Password";
+			sourceTree = "<group>";
+		};
+		73A3340E2402E8FE003A9E23 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				736774FD23D634FC009DB11F /* MenuViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		73A3340F2402E90B003A9E23 /* Setting View */ = {
+			isa = PBXGroup;
+			children = (
+				7367750723E0B763009DB11F /* SettingViewController.swift */,
+			);
+			path = "Setting View";
+			sourceTree = "<group>";
+		};
+		73A334102402E91C003A9E23 /* Support View */ = {
+			isa = PBXGroup;
+			children = (
+				7367750923E0BBC9009DB11F /* SupportViewController.swift */,
+			);
+			path = "Support View";
 			sourceTree = "<group>";
 		};
 		9E401BFD25E4889B9ED5623D /* Pods */ = {
@@ -268,17 +379,22 @@
 				73213181234032680069B4C8 /* AppDelegate.swift in Sources */,
 				73CD11B523CBB4AD003390EF /* ActivityIndicatory.swift in Sources */,
 				73213183234032680069B4C8 /* SceneDelegate.swift in Sources */,
+				7393E37E2402F90000733CA9 /* EditUserSettingViewController.swift in Sources */,
 				73F1CFAE2352A801001900DC /* HelperNames.swift in Sources */,
 				7321318B234032680069B4C8 /* notes.xcdatamodeld in Sources */,
 				73CD11B023CB8DB8003390EF /* CheckboxSetting.swift in Sources */,
 				737D19B62360D9E300563F05 /* CreateArticleViewController.swift in Sources */,
 				73CD11B723CCF6FF003390EF /* ResetPasswordViewController.swift in Sources */,
+				7367750223D64572009DB11F /* ContainerViewController.swift in Sources */,
 				7363EEF7239D30D900872FAE /* DataProvider.swift in Sources */,
 				731F9E11234FD024001D448C /* NotesCatalogCollectionViewCell.swift in Sources */,
 				733FD77823412E8A00A2DFAF /* LoginViewController.swift in Sources */,
+				7367750A23E0BBC9009DB11F /* SupportViewController.swift in Sources */,
 				731F9E0F234FCFF0001D448C /* NotesCatalogCollectionViewController.swift in Sources */,
+				7367750823E0B763009DB11F /* SettingViewController.swift in Sources */,
 				738C5674239843B2008EA0C2 /* NotesCatalogCollectionViewControllerDataSourse.swift in Sources */,
-				738C567823984450008EA0C2 /* ArticleModel.swift in Sources */,
+				738C567823984450008EA0C2 /* BaseModel.swift in Sources */,
+				736774FE23D634FC009DB11F /* MenuViewController.swift in Sources */,
 				733708A723492EA200985AB6 /* Color.swift in Sources */,
 				739F7C92236DD06500E07FF2 /* AccessInPhotoArticle.swift in Sources */,
 				735905D42348F1E300BD58A4 /* ExtentionValid.swift in Sources */,
@@ -408,6 +524,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -419,7 +536,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
