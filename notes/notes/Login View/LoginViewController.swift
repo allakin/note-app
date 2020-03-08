@@ -93,13 +93,15 @@ class LoginViewController: UIViewController {
   }
   
   @objc func validateEmail() {
-    guard let finalResult = emailTextField.text?.isValid(.email) else {return}
-    emailCorrect = finalResult
-    correctFormWithLoginInformation()
-    if finalResult == true {
+		guard let email = emailTextField.text else { return }
+    if emailTextField.returnValidEmail(textField: emailTextField, email: email) == true {
       emailTextField.borderActiveColor = .MainGreenColor
-    }
-    print(finalResult)
+			emailCorrect = true
+			correctFormWithLoginInformation()
+		} else{
+			emailTextField.borderActiveColor = .red
+		}
+		print(emailTextField.returnValidEmail(textField: emailTextField, email: email))
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -111,13 +113,15 @@ class LoginViewController: UIViewController {
   }
   
   @objc func validatePassword() {
-    guard let finalResult = passwordTextField.text?.isValid(.password) else {return}
-    passwordCorrect = finalResult
-    correctFormWithLoginInformation()
-    if finalResult == true {
+		guard let password = passwordTextField.text else { return }
+    if passwordTextField.returnValidPassword(textField: passwordTextField, password: password) == true {
       passwordTextField.borderActiveColor = .MainGreenColor
-    }
-    print(finalResult)
+			passwordCorrect = true
+			correctFormWithLoginInformation()
+		} else{
+			passwordTextField.borderActiveColor = .red
+		}
+		print(emailTextField.returnValidPassword(textField: passwordTextField, password: password))
   }
   
   @IBAction func checkBoxButtonAction(_ sender: Any) {

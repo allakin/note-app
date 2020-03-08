@@ -51,6 +51,7 @@ class RegistrationViewController: UIViewController {
     passwordTextField.borderActiveColor = .LightBlueColor
     passwordTextField.placeholder = "Пароль"
     passwordTextField.placeholderFontScale = 1
+		passwordTextField.isSecureTextEntry = true
     passwordTextField.font = UIFont(name: "Helvetica", size: 16)
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     
@@ -97,26 +98,30 @@ class RegistrationViewController: UIViewController {
   }
 
   @objc func validateEmail() {
-    guard let finalResult = emailTextField.text?.isValid(.email) else {return}
-    emailValidState = finalResult
-    if finalResult == true {
+		guard let email = emailTextField.text else { return }
+    if emailTextField.returnValidEmail(textField: emailTextField, email: email) == true {
       emailTextField.borderActiveColor = .MainGreenColor
-      correctFormWithLoginInformation()
-    }
-    print(finalResult)
+			emailValidState = true
+			correctFormWithRegistrationInformation()
+		} else{
+			emailTextField.borderActiveColor = .red
+		}
+		print(emailTextField.returnValidEmail(textField: emailTextField, email: email))
    }
    
    @objc func validatePassword() {
-    guard let finalResult = passwordTextField.text?.isValid(.password) else {return}
-    passwordValidState = finalResult
-    if finalResult == true {
+		guard let password = passwordTextField.text else { return }
+    if passwordTextField.returnValidPassword(textField: passwordTextField, password: password) == true {
       passwordTextField.borderActiveColor = .MainGreenColor
-      correctFormWithLoginInformation()
-    }
-    print(finalResult)
+			passwordValidState = true
+			correctFormWithRegistrationInformation()
+		} else{
+			passwordTextField.borderActiveColor = .red
+		}
+		print(emailTextField.returnValidPassword(textField: passwordTextField, password: password))
    }
   
-  func correctFormWithLoginInformation() {
+  func correctFormWithRegistrationInformation() {
     if emailValidState == true && passwordValidState == true {
          registrationButton.isEnabled = true
          registrationButton.backgroundColor = .LightOrangeColor

@@ -29,13 +29,35 @@ class EditUserSettingViewController: UIViewController {
     return label
   }()
 	
-	let updateEmail: UIButton = {
+	let updateUserInformation: UIButton = {
 		let button = UIButton()
 		button.backgroundColor = .LightOrangeColor
 		button.setTitle("Обновить", for: .normal)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.layer.cornerRadius = 25
-		button.addTarget(self, action: #selector(updateEmailAction), for: .touchUpInside)
+		button.addTarget(self, action: #selector(updateUserInformationAction), for: .touchUpInside)
+		button.tintColor = .white
+		return button
+	}()
+	
+	let cancelUpdateUserInformation: UIButton = {
+		let button = UIButton()
+		button.backgroundColor = .lightGray
+		button.setTitle("Отмена", for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.layer.cornerRadius = 25
+		button.addTarget(self, action: #selector(cancelUpdateUserInformationAction), for: .touchUpInside)
+		button.tintColor = .white
+		return button
+	}()
+	
+	let updateUserPassword: UIButton = {
+		let button = UIButton()
+		button.backgroundColor = .LightBlueColor
+		button.setTitle("Сменить пароль", for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.layer.cornerRadius = 25
+		button.addTarget(self, action: #selector(updateUserPasswordAction), for: .touchUpInside)
 		button.tintColor = .white
 		return button
 	}()
@@ -50,7 +72,7 @@ class EditUserSettingViewController: UIViewController {
     
 	}
 
-	@objc func updateEmailAction() {
+	@objc func updateUserInformationAction() {
 		guard let email = emailTextField.text else {return}
 		let user = Auth.auth().currentUser
 		user?.updateEmail(to: email) { error in
@@ -63,6 +85,31 @@ class EditUserSettingViewController: UIViewController {
 			}
 		}
 	}
+	
+	@objc func cancelUpdateUserInformationAction() {
+		dismiss(animated: true, completion: nil)
+	}
+	
+	@objc func updateUserPasswordAction() {
+    guard let email = emailTextField.text else { return }
+		if email.isValid(.email) == true {
+			Auth.auth().sendPasswordReset(withEmail: email, completion: { (error) in
+				//Make sure you execute the following code on the main queue
+				DispatchQueue.main.async {
+					//Use "if let" to access the error, if it is non-nil
+					if let error = error {
+						let resetFailedAlert = UIAlertController(title: "Ошибка сброса пароля!", message: "По непонятным причинам сбросить пароль невозможно. Ошибка: \(error.localizedDescription).", preferredStyle: .alert)
+						resetFailedAlert.addAction(UIAlertAction(title: "Попробую позже", style: .default, handler: nil))
+						self.present(resetFailedAlert, animated: true, completion: nil)
+					} else {
+						let resetEmailSentAlert = UIAlertController(title: "Пароль успешно сброшен!", message: "На указаный указаный Вами адрес(\(email)) придёт письмо с инструкциями.", preferredStyle: .alert)
+						resetEmailSentAlert.addAction(UIAlertAction(title: "Отлично", style: .default, handler: nil))
+						self.present(resetEmailSentAlert, animated: true, completion: nil)
+					}
+				}
+			})
+		}
+  }
 	
 	func updateDataBase() {
 		guard let email = emailTextField.text,
@@ -108,11 +155,17 @@ class EditUserSettingViewController: UIViewController {
   }
 	
 	@objc func validateEmail() {
-    guard let finalResult = emailTextField.text?.isValid(.email) else {return}
-    if finalResult == true {
+		guard let email = emailTextField.text else { return }
+    if emailTextField.returnValidEmail(textField: emailTextField, email: email) == true {
       emailTextField.borderActiveColor = .MainGreenColor
-    }
-    print(finalResult)
+			updateUserPassword.isSelected = true
+			updateUserPassword.backgroundColor = .LightBlueColor
+		} else{
+			updateUserPassword.isSelected = false
+			updateUserPassword.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+			emailTextField.borderActiveColor = .red
+		}
+		print(emailTextField.returnValidEmail(textField: emailTextField, email: email))
   }
 	
 	func settingSecondNameTextField() {
@@ -133,8 +186,10 @@ class EditUserSettingViewController: UIViewController {
     view.addSubview(emailTextField)
     view.addSubview(nameTextField)
     view.addSubview(editLabel)
-		view.addSubview(updateEmail)
+		view.addSubview(updateUserInformation)
 		view.addSubview(secondNameTextField)
+		view.addSubview(cancelUpdateUserInformation)
+		view.addSubview(updateUserPassword)
     
     editLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
     editLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
@@ -156,10 +211,21 @@ class EditUserSettingViewController: UIViewController {
     secondNameTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
     secondNameTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
 		
-		updateEmail.topAnchor.constraint(equalTo: secondNameTextField.bottomAnchor, constant: 30).isActive = true
-    updateEmail.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
-    updateEmail.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
-    updateEmail.heightAnchor.constraint(equalToConstant: 50).isActive = true
+		updateUserInformation.topAnchor.constraint(equalTo: secondNameTextField.bottomAnchor, constant: 30).isActive = true
+    updateUserInformation.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+    updateUserInformation.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+    updateUserInformation.heightAnchor.constraint(equalToConstant: 50).isActive = true
+		
+		updateUserPassword.topAnchor.constraint(equalTo: updateUserInformation.bottomAnchor, constant: 20).isActive = true
+    updateUserPassword.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+    updateUserPassword.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+    updateUserPassword.heightAnchor.constraint(equalToConstant: 50).isActive = true
+		
+		cancelUpdateUserInformation.topAnchor.constraint(equalTo: updateUserPassword.bottomAnchor, constant: 20).isActive = true
+    cancelUpdateUserInformation.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+		cancelUpdateUserInformation.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+    cancelUpdateUserInformation.heightAnchor.constraint(equalToConstant: 50).isActive = true
+		
   }
   
 }

@@ -73,12 +73,15 @@ class ResetPasswordViewController: UIViewController {
   }
 
   @objc func validateEmail() {
-    guard let finalResult = emailTextField.text?.isValid(.email) else {return}
-    if finalResult == true {
-      resetButton.isEnabled = true
+		guard let email = emailTextField.text else { return }
+    if emailTextField.returnValidEmail(textField: emailTextField, email: email) == true {
+      emailTextField.borderActiveColor = .MainGreenColor
+			resetButton.isEnabled = true
       resetButton.backgroundColor = .LightOrangeColor
-    }
-    print(finalResult)
+		} else{
+			emailTextField.borderActiveColor = .red
+		}
+		print(emailTextField.returnValidEmail(textField: emailTextField, email: email))
   }
   
   @objc func resetButtonAction() {
@@ -98,7 +101,6 @@ class ResetPasswordViewController: UIViewController {
         }
       }
     })
-    
   }
   
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
   
@@ -35,4 +36,18 @@ extension String {
     return NSPredicate(format: format, regex).evaluate(with: self)
   }
   
+}
+
+extension UITextField {
+	
+	func returnValidEmail(textField: UITextField, email: String) -> Bool {
+		textField.text = email
+		return textField.text?.isValid(.email) ?? false
+	}
+	
+	func returnValidPassword(textField: UITextField, password: String) -> Bool {
+		textField.text = password
+		return textField.text?.isValid(.password) ?? false
+	}
+	
 }

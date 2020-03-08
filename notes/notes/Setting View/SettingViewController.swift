@@ -90,7 +90,7 @@ class SettingViewController: UIViewController {
     sheetController.handleColor = UIColor.white
     sheetController.topCornersRadius = 25
     sheetController.handleSize = CGSize(width: 50, height: 4)
-    sheetController.setSizes([.fixed(480)], animated: true)
+    sheetController.setSizes([.fixed(600)], animated: true)
     // It is important to set animated to false or it behaves weird currently
     self.present(sheetController, animated: false, completion: nil)
   }
