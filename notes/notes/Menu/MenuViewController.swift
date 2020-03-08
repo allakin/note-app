@@ -139,7 +139,7 @@ class MenuViewController: UIViewController {
   func uiSetting() {
     view.addSubview(closeMenuButton)
 //    view.addSubview(noteMenuButton)
-    view.addSubview(supportMenuButton)
+//    view.addSubview(supportMenuButton)
     view.addSubview(activeButtonNote)
     view.addSubview(activeButtonSupport)
     view.addSubview(settingMenuButton)
@@ -160,22 +160,22 @@ class MenuViewController: UIViewController {
 //    noteMenuButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
 //    noteMenuButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     
-    activeButtonSupport.topAnchor.constraint(equalTo: closeMenuButton.bottomAnchor, constant: 80).isActive = true
-    activeButtonSupport.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-    activeButtonSupport.widthAnchor.constraint(equalToConstant: 4).isActive = true
-    activeButtonSupport.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//    activeButtonSupport.topAnchor.constraint(equalTo: closeMenuButton.bottomAnchor, constant: 80).isActive = true
+//    activeButtonSupport.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+//    activeButtonSupport.widthAnchor.constraint(equalToConstant: 4).isActive = true
+//    activeButtonSupport.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//
+//    supportMenuButton.topAnchor.constraint(equalTo: closeMenuButton.bottomAnchor, constant: 80).isActive = true
+//    supportMenuButton.leftAnchor.constraint(equalTo: activeButtonSupport.rightAnchor, constant: 16).isActive = true
+//    supportMenuButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+//    supportMenuButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     
-    supportMenuButton.topAnchor.constraint(equalTo: closeMenuButton.bottomAnchor, constant: 80).isActive = true
-    supportMenuButton.leftAnchor.constraint(equalTo: activeButtonSupport.rightAnchor, constant: 16).isActive = true
-    supportMenuButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-    supportMenuButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-    
-    activeButtonSetting.topAnchor.constraint(equalTo: supportMenuButton.bottomAnchor, constant: 30).isActive = true
+    activeButtonSetting.topAnchor.constraint(equalTo: closeMenuButton.bottomAnchor, constant: 80).isActive = true
     activeButtonSetting.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
     activeButtonSetting.widthAnchor.constraint(equalToConstant: 4).isActive = true
     activeButtonSetting.heightAnchor.constraint(equalToConstant: 50).isActive = true
     
-    settingMenuButton.topAnchor.constraint(equalTo: supportMenuButton.bottomAnchor, constant: 30).isActive = true
+    settingMenuButton.topAnchor.constraint(equalTo: closeMenuButton.bottomAnchor, constant: 80).isActive = true
     settingMenuButton.leftAnchor.constraint(equalTo: activeButtonSetting.rightAnchor, constant: 16).isActive = true
     settingMenuButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
     settingMenuButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
