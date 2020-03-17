@@ -17,6 +17,7 @@ class EditUserSettingViewController: UIViewController {
 	let secondNameTextField = HoshiTextField()
 	var userName = ""
 	var userSecondName = ""
+	let userDefault = UserDefaults.standard
   
   let editLabel: UILabel = {
     let label = UILabel()
@@ -79,9 +80,14 @@ class EditUserSettingViewController: UIViewController {
 			if let error = error {
 				// An error happened.
 			} else {
-				self.dismiss(animated: true) {
-					self.updateDataBase()
+				self.userDefault.set(false, forKey: "stateCheckbox")
+				self.updateDataBase()
+				let alert = UIAlertController(title: "Email адрес успешно изменен!", message: "При авторизации вам надо будет ввести новый email", preferredStyle: .alert)
+				let action = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+					self.dismiss(animated: true) {}
 				}
+				alert.addAction(action)
+				self.present(alert, animated: true, completion: nil)
 			}
 		}
 	}
@@ -133,7 +139,7 @@ class EditUserSettingViewController: UIViewController {
     emailTextField.borderInactiveColor = .LightGrayColor
 		emailTextField.borderActiveColor = .MainGreenColor
     emailTextField.textColor = .TextGrayColor
-    emailTextField.placeholder = "E-mail"
+    emailTextField.placeholder = "Email"
     emailTextField.font = UIFont(name: "Helvetica", size: 16)
     emailTextField.placeholderFontScale = 1
     emailTextField.keyboardType = .emailAddress
