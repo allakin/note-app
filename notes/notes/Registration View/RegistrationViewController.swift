@@ -31,11 +31,33 @@ class RegistrationViewController: UIViewController {
     setingUIElements()
   }
   
+  var showPasswordButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.backgroundColor = .clear
+    button.layer.cornerRadius = 25
+    button.setImage(UIImage(systemName: "eye"), for: .normal)
+    button.tintColor = .LightOrangeColor
+    button.addTarget(self, action: #selector(showPasswordButtonActive), for: .touchUpInside)
+    return button
+  }()
+  
+  @objc func showPasswordButtonActive() {
+    if passwordTextField.isSecureTextEntry == true {
+      passwordTextField.isSecureTextEntry = false
+      showPasswordButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+    } else {
+      passwordTextField.isSecureTextEntry = true
+      showPasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+    }
+  }
+  
   func setingEmailField() {
     view.addSubview(firstNameTextField)
     view.addSubview(lastNameTextField)
     view.addSubview(emailTextField)
     view.addSubview(passwordTextField)
+    view.addSubview(showPasswordButton)
     
     emailTextField.placeholderColor = .TextGrayColor
     emailTextField.borderInactiveColor = .LightGrayColor
@@ -95,6 +117,11 @@ class RegistrationViewController: UIViewController {
     passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
     passwordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
     passwordTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    
+    showPasswordButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 54).isActive = true
+    showPasswordButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+    showPasswordButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    showPasswordButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
   }
 
   @objc func validateEmail() {
@@ -110,6 +137,7 @@ class RegistrationViewController: UIViewController {
    }
    
    @objc func validatePassword() {
+
 		guard let password = passwordTextField.text else { return }
     if passwordTextField.returnValidPassword(textField: passwordTextField, password: password) == true {
       passwordTextField.borderActiveColor = .MainGreenColor
@@ -142,7 +170,6 @@ class RegistrationViewController: UIViewController {
   }
   
   @IBAction func signUpTapped(_ sender: Any) {
-    view.activityStartAnimating(activityColor: .LightOrangeColor, alpha: 0.6)
     //Validate the fields
     let error = validateFields()
     if error != "" && emailValidState != false && passwordValidState != false {
@@ -151,27 +178,36 @@ class RegistrationViewController: UIViewController {
       guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
         let email = emailTextField.text, let password = passwordTextField.text else {return}
       
-      Auth.auth().createUser(withEmail: email, password: password) { (results, err) in
-        if err != nil {
-          print("Error creating user")
-        } else {
-          
-          let keyID = Reference().returnUserID()
-          let data = [StoreKeyList().getKeyFromStore(key: .personName): firstName,
-                      StoreKeyList().getKeyFromStore(key: .personSecondName): lastName,
-                      StoreKeyList().getKeyFromStore(key: .userEmail): email] as [String : Any]
-          Reference().correctReference().child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .personInformation)).child(keyID ?? "").setValue(data)
-          
-          //Transition to the home screen
-          
-          DispatchQueue.main.async {
-            let registration = self.storyboard?.instantiateViewController(withIdentifier: "ContainerViewController") as! ContainerViewController
-            registration.modalPresentationStyle = .fullScreen
-            self.present(registration, animated: true, completion: nil)
-            self.view.activityStopAnimating()
-            print("User was create successfully")
-          }
+      Auth.auth().createUser(withEmail: email, password: password) { (results, error) in
+				var usedAccount = false
+				if error != nil {
+					usedAccount = true
+					print(error?.localizedDescription)
         }
+				
+				if usedAccount == false {
+					self.view.activityStartAnimating(activityColor: .LightOrangeColor, alpha: 0.6)
+					let keyID = Reference().returnUserID()
+					let data = [StoreKeyList().getKeyFromStore(key: .personName): firstName,
+											StoreKeyList().getKeyFromStore(key: .personSecondName): lastName,
+											StoreKeyList().getKeyFromStore(key: .userEmail): email] as [String : Any]
+					Reference().correctReference().child(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .personInformation)).child(keyID ?? "").setValue(data)
+					
+					//Transition to the home screen
+					let registration = self.storyboard?.instantiateViewController(withIdentifier: "ContainerViewController") as! ContainerViewController
+					registration.modalPresentationStyle = .fullScreen
+					self.present(registration, animated: true, completion: nil)
+					self.view.activityStopAnimating()
+					print("User was create successfully")
+				} else {
+					let alert = UIAlertController(title: "Ошибка!", message: "Аккаунт с таким email занят, просьба ввести другой E-mail адрес или попробуйте сбросить пароль.", preferredStyle: .alert)
+					let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+					alert.addAction(action)
+					self.present(alert, animated: true, completion: nil)
+					self.emailTextField.borderInactiveColor = .red
+					self.emailTextField.borderActiveColor = .red
+				}
+				
       }
 
     }

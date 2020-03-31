@@ -49,7 +49,6 @@ class StartScreenViewController: UIViewController {
    }
    */
   @IBAction func loginButton(_ sender: Any) {
-    
     DispatchQueue.main.async {
       let login = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
       self.present(login, animated: true, completion: nil)
