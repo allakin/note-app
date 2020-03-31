@@ -33,7 +33,7 @@ class EditUserSettingViewController: UIViewController {
 	let updateUserInformation: UIButton = {
 		let button = UIButton()
 		button.backgroundColor = .LightOrangeColor
-		button.setTitle("Обновить", for: .normal)
+		button.setTitle("Обновить информацию", for: .normal)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.layer.cornerRadius = 25
 		button.addTarget(self, action: #selector(updateUserInformationAction), for: .touchUpInside)

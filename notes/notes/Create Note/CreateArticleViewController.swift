@@ -186,7 +186,7 @@ class CreateArticleViewController: UIViewController {
           let childUpdates = ["/\(StoreKeysFirebaseEntity().getEntityKeyFromFirebase(key: .articles))/\(Reference().returnUserID())/\(key)/": post]
 					
           Reference().correctReference().updateChildValues(childUpdates)
-//          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
+          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
           print("Data Changed")
         })
       })
