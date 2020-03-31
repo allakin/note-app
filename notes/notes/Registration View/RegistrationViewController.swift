@@ -31,11 +31,33 @@ class RegistrationViewController: UIViewController {
     setingUIElements()
   }
   
+  var showPasswordButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.backgroundColor = .clear
+    button.layer.cornerRadius = 25
+    button.setImage(UIImage(systemName: "eye"), for: .normal)
+    button.tintColor = .LightOrangeColor
+    button.addTarget(self, action: #selector(showPasswordButtonActive), for: .touchUpInside)
+    return button
+  }()
+  
+  @objc func showPasswordButtonActive() {
+    if passwordTextField.isSecureTextEntry == true {
+      passwordTextField.isSecureTextEntry = false
+      showPasswordButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+    } else {
+      passwordTextField.isSecureTextEntry = true
+      showPasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+    }
+  }
+  
   func setingEmailField() {
     view.addSubview(firstNameTextField)
     view.addSubview(lastNameTextField)
     view.addSubview(emailTextField)
     view.addSubview(passwordTextField)
+    view.addSubview(showPasswordButton)
     
     emailTextField.placeholderColor = .TextGrayColor
     emailTextField.borderInactiveColor = .LightGrayColor
@@ -95,6 +117,11 @@ class RegistrationViewController: UIViewController {
     passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
     passwordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
     passwordTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    
+    showPasswordButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 54).isActive = true
+    showPasswordButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+    showPasswordButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    showPasswordButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
   }
 
   @objc func validateEmail() {
