@@ -41,7 +41,7 @@ extension NotesCatalogCollectionViewController {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return CGSize(width: view.frame.size.width, height: 80)
+    return CGSize(width: view.frame.size.width, height: 120)
   }
   
 }

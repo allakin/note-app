@@ -18,10 +18,8 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var checkBoxViewContainer: UIView!
   @IBOutlet weak var loginButton: UIButton!
   
-  
   let emailTextField = HoshiTextField()
   let passwordTextField = HoshiTextField()
-  //  var stateCheckbox = false
   let userDefault = UserDefaults.standard
   var emailCorrect = false
   var passwordCorrect = false
