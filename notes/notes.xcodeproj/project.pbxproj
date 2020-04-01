@@ -45,7 +45,7 @@
 		691AFB4EA5175AD919B6D673 /* Pods_notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		731F9E0E234FCFF0001D448C /* NotesCatalogCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCatalogCollectionViewController.swift; sourceTree = "<group>"; };
 		731F9E10234FD024001D448C /* NotesCatalogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCatalogCollectionViewCell.swift; sourceTree = "<group>"; };
-		7321317D234032680069B4C8 /* notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7321317D234032680069B4C8 /* Easynote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Easynote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73213180234032680069B4C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73213182234032680069B4C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		73213187234032680069B4C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		7321317E234032680069B4C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7321317D234032680069B4C8 /* notes.app */,
+				7321317D234032680069B4C8 /* Easynote.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,7 +278,7 @@
 			);
 			name = notes;
 			productName = notes;
-			productReference = 7321317D234032680069B4C8 /* notes.app */;
+			productReference = 7321317D234032680069B4C8 /* Easynote.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -554,8 +554,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.anpleenko-dev.notes";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anpleenko-dev.easynote";
+				PRODUCT_NAME = Easynote;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -574,8 +574,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.anpleenko-dev.notes";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anpleenko-dev.easynote";
+				PRODUCT_NAME = Easynote;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
