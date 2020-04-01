@@ -112,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				73213191234032690069B4C8 /* Info.plist */,
+				7321318E234032690069B4C8 /* LaunchScreen.storyboard */,
 				73A334092402E75F003A9E23 /* Base Files */,
 				73A334072402E70E003A9E23 /* Login View */,
 				73A334082402E73E003A9E23 /* Registration View */,
@@ -174,7 +175,6 @@
 				73213180234032680069B4C8 /* AppDelegate.swift */,
 				73213186234032680069B4C8 /* Main.storyboard */,
 				7321318C234032690069B4C8 /* Assets.xcassets */,
-				7321318E234032690069B4C8 /* LaunchScreen.storyboard */,
 				73213189234032680069B4C8 /* notes.xcdatamodeld */,
 				73213197234032EE0069B4C8 /* GoogleService-Info.plist */,
 			);
@@ -557,7 +557,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anpleenko-dev.easynote";
 				PRODUCT_NAME = Easynote;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -577,7 +577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anpleenko-dev.easynote";
 				PRODUCT_NAME = Easynote;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
