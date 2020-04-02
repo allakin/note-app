@@ -1,3 +1,5 @@
+<img src="https://github.com/allakin/note-app/blob/master/notes/Sourse/logo.png" width="100">
+
 # Easynote
 
 ## Description
