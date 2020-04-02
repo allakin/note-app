@@ -31,6 +31,18 @@ class RegistrationViewController: UIViewController {
     setingUIElements()
   }
   
+  var passwordText: UILabel = {
+    let text = UILabel()
+    text.text = "Минимальный пароль 10 символов. Например: 123456789A или qwertyui1."
+    text.font = UIFont(name: "Helvetica", size: 14)
+    text.tintColor = .gray
+    text.alpha = 0.5
+    text.translatesAutoresizingMaskIntoConstraints = false
+    text.numberOfLines = 3
+    text.lineBreakMode = .byWordWrapping
+    return text
+  }()
+  
   var showPasswordButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +70,7 @@ class RegistrationViewController: UIViewController {
     view.addSubview(emailTextField)
     view.addSubview(passwordTextField)
     view.addSubview(showPasswordButton)
+    view.addSubview(passwordText)
     
     emailTextField.placeholderColor = .TextGrayColor
     emailTextField.borderInactiveColor = .LightGrayColor
@@ -117,6 +130,10 @@ class RegistrationViewController: UIViewController {
     passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
     passwordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
     passwordTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    
+    passwordText.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10).isActive = true
+    passwordText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+    passwordText.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
     
     showPasswordButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 54).isActive = true
     showPasswordButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true

@@ -35,6 +35,18 @@ class LoginViewController: UIViewController {
     return button
   }()
   
+  var passwordText: UILabel = {
+    let text = UILabel()
+    text.text = "Минимальный пароль 10 символов. Например: 123456789A или qwertyui1."
+    text.font = UIFont(name: "Helvetica", size: 14)
+    text.tintColor = .gray
+    text.alpha = 0.5
+    text.translatesAutoresizingMaskIntoConstraints = false
+    text.numberOfLines = 3
+    text.lineBreakMode = .byWordWrapping
+    return text
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.overrideUserInterfaceStyle = .light
@@ -71,6 +83,7 @@ class LoginViewController: UIViewController {
     view.addSubview(emailTextField)
     view.addSubview(passwordTextField)
     view.addSubview(showPasswordButton)
+    view.addSubview(passwordText)
     
     emailTextField.placeholderColor = .TextGrayColor
     emailTextField.borderInactiveColor = .LightGrayColor
@@ -114,6 +127,10 @@ class LoginViewController: UIViewController {
     checkBoxViewContainer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     checkBoxViewContainer.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     checkBoxViewContainer.heightAnchor.constraint(equalToConstant: 47).isActive = true
+    
+    passwordText.topAnchor.constraint(equalTo: checkBoxViewContainer.bottomAnchor, constant: 10).isActive = true
+    passwordText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+    passwordText.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
   }
   
   @objc func validateEmail() {

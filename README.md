@@ -1,7 +1,7 @@
 <img src="https://github.com/allakin/note-app/blob/master/notes/Sourse/logo.png" width="100">
 
-# Easynote
-**Swift 5**
+# Easynote a pocket notebook
+**Swift 5**,
 **Support device with IOS 13**
 
 ## Description
