@@ -554,6 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anpleenko-dev.easynote";
 				PRODUCT_NAME = Easynote;
 				SWIFT_VERSION = 5.0;
@@ -574,6 +575,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anpleenko-dev.easynote";
 				PRODUCT_NAME = Easynote;
 				SWIFT_VERSION = 5.0;
