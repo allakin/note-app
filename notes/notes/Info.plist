@@ -19,13 +19,13 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>Camera Usage Description</key>
-	<string>take a photo</string>
+	<string>Access need to the user can upload images or covers and avatar an app.</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>I want to access in mu camera</string>
+	<string>Access need to the user can upload images or covers and avatar an app.</string>
 	<key>Photo Library Usage Description</key>
-	<string>take a photo</string>
+	<string>Access need to the user can upload images or covers and avatar an app.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
